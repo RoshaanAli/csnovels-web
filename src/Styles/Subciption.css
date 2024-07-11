@@ -1,0 +1,425 @@
+.subcription h1 {
+    text-align: center;
+    font-family: 'Montserrat-semiBold';
+    padding: 40px 0;
+}
+.subcription {
+    padding-bottom: 20px;
+}
+span.span1 {
+    font-size: 43px;
+}
+.sign-up {
+    display: flex;
+    justify-content: space-between;
+    border: 7px solid black;
+    border-radius: 18px;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: 60px;
+    height: 280px;
+}
+
+.free-acc {
+    padding-top: 90px;
+    width: 60%;
+    padding-left: 90px;
+}
+
+.free-cs {
+    width: 45%;
+}
+
+
+
+.free-cs button {
+    margin-top: 20px;
+    width: 200px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    height: 50px;
+    font-size: 29px;
+    font-family: 'Montserrat-Bold';
+    position: absolute;
+    top: 10px;
+    right: 3%;
+}
+
+.free-cs h1 {
+    font-size: 50px;
+}
+
+.free-cs h1 {
+    font-size: 107px;
+    font-family: 'Montserrat-extrabold';
+    font-weight: bolder;
+    margin-bottom: 0;
+    line-height: 100px;
+    padding-top: 50px;
+    padding-right: 20px;
+    margin-bottom: -13px;
+    text-align: right;
+}
+
+.free-acc p {
+    font-size: 18px;
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.free-acc h2 {
+    font-size: 44px;
+    font-family: 'Montserrat-extrabold';
+}
+
+.free {
+    width: 150px;
+    height: 150px;
+    background: white;
+    border: 5px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 31px;
+    font-family: 'Montserrat-ExtraBold';
+    text-transform: uppercase;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*  */
+.free.dollar {
+    FONT-SIZE: 63PX;
+}
+
+.free.currt {
+    FONT-SIZE: 63PX;
+    background: #ffc23d;
+    border: 7px solid black;
+    color: black;
+}
+
+.sign-up.current .free-cs button {
+    color: #ffc23d;
+}
+
+.sign-up.current .free-acc h2 {
+    color: white;
+}
+
+.sign-up.current .free-acc p {
+    color: white;
+}
+
+
+/*  */
+.sign-up.current {
+    background: #ffc23d;
+}
+
+
+/*  */
+.free.dollar {
+    FONT-SIZE: 63PX;
+    background: #212529;
+    border: 4px solid #ffc23d;
+    color: #ffc23d;
+}
+
+.sign-up.upgrade {
+    BACKGROUND: hsl(240deg 2% 13%);
+    border: 4px solid #ffc23d;
+}
+
+.free-acc.upgrade-acc {
+    padding-top: 30px;
+}
+
+ul.add li {
+    font-size: 24px;
+    font-family: 'Montserrat-ExtraBold';
+    list-style: disc;
+    color: white;
+}
+
+.free-acc.upgrade-acc h2 {
+    font-size: 30px;
+    color: white;
+}
+
+.free-acc.upgrade-acc p {
+    padding-top: 0px;
+    color: white;
+}
+
+.free-cs.upgrade-cs h1 {
+    font-size: 160px;
+    COLOR: hsl(41deg 100% 62%);
+    line-height: 89px;
+}
+
+.free-cs.upgrade-cs {
+    width: 30%;
+    padding-bottom: 26px;
+}
+
+.free-cs.upgrade-cs BUTTON {
+    COLOR: BLACK;
+    BACKGROUND: #ffc23d;
+}
+
+ul.add {
+    padding-left: 22px;
+}
+
+/*  */
+
+
+@media (max-width: 1440px) {
+
+    .free {
+        width: 100px;
+        height: 100px;
+        font-size: 26px;
+    }
+
+    .container {
+        width: 83%;
+    }
+
+    .free-acc h2 {
+        font-size: 41px;
+    }
+
+    .free-cs {
+        width: 32%;
+    }
+
+    .free-cs h1 {
+        font-size: 70px;
+        line-height: 77px;
+        text-align: right;
+    }
+
+    .free.dollar {
+        FONT-SIZE: 43PX;
+    }
+
+    .free-acc.upgrade-acc h2 {
+        font-size: 26px;
+    }
+
+    ul.add li {
+        font-size: 21px;
+    }
+
+    .free-cs.upgrade-cs h1 {
+        font-size: 120px;
+        line-height: 60px;
+    }
+
+    .free-acc p {
+        font-size: 17px;
+    }
+
+}
+
+@media (max-width: 1199px) {
+
+    .free-acc h2 {
+        font-size: 34px;
+    }
+
+    .free-cs {
+        width: 41%;
+    }
+
+    ul.add li {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .free-acc.upgrade-acc h2 {
+        font-size: 19px;
+    }
+    .free-cs h1 {
+        line-height: 64px;
+    }
+    ul.add li {
+        font-size: 15px;
+    }
+
+    .free-acc p {
+        font-size: 13px;
+    }
+
+    .free-acc {
+        padding-left: 70px;
+    }
+
+    .free-cs.upgrade-cs h1 {
+        font-size: 80px;
+        line-height: 33px;
+    }
+
+    .free-cs button {
+        width: 170px;
+        height: 45px;
+        font-size: 23px;
+    }
+
+    .free-acc h2 br {
+        display: none;
+    }
+
+    .free-acc h2 {
+        font-size: 30px;
+    }
+
+    .free-cs h1 {
+        font-size: 54px;
+    }
+
+    .sign-up {
+        height: 240px;
+    }
+
+    .free-acc p {
+        font-size: 15px;
+    }
+
+    ul.add li {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .sign-up {
+        height: auto;
+        display: block;
+    }
+
+    .free-cs button {
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: initial;
+    }
+
+    .free-acc {
+        padding-left: 50px;
+        width: 100%;
+    }
+
+    .free-cs {
+        width: 100%;
+    }
+
+    .free-cs h1 {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 100px;
+    }
+
+    ul.add {
+        padding-left: 2px;
+    }
+
+    ul.add li {
+        font-size: 15px;
+        line-height: 31px;
+    }
+
+    .free.dollar {
+        FONT-SIZE: 33PX;
+    }
+
+    .free.currt {
+        FONT-SIZE: 43PX;
+    }
+
+    .free-acc p {
+        font-size: 15px;
+    }
+
+    .free-acc p br {
+        display: none;
+    }
+
+    .free-cs.upgrade-cs {
+        width: 100%;
+    }
+
+    .free {
+        top: 0;
+        left: 50%;
+    }
+    .free-acc.upgrade-acc {
+        padding-top: 72px;
+    }
+}
+
+@media (max-width: 424px) {
+    .container {
+        width: 94%;
+    }
+
+    .free-acc {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .free-acc h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .free-acc p {
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .free-cs h1 {
+        font-size: 44px;
+    }
+
+    .free-acc.upgrade-acc {
+        padding-top: 80px;
+    }
+
+    .free-acc.upgrade-acc {
+        padding-top: 80px;
+        padding-left: 24px;
+        padding-right: 8px;
+    }
+
+    ul.add li {
+        font-size: 13px;
+        line-height: 25px;
+    }
+
+    .free-cs.upgrade-cs h1 {
+        font-size: 50px;
+        line-height: 33px;
+        padding-right: 0;
+    }
+    
+}
+
+
+@media (max-width: 319px) {
+
+
+    .subcription h1 {
+        font-size: 36px;
+    }
+
+}

@@ -1,0 +1,5911 @@
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/CHANGELOG.md b/node_modules/postcss-safe-parser/node_modules/postcss/CHANGELOG.md
+new file mode 100644
+index 0000000..11aebbc
+--- /dev/null
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/CHANGELOG.md
+@@ -0,0 +1,806 @@
++# Change Log
++This project adheres to [Semantic Versioning](https://semver.org/).
++
++## 8.2.6
++* Fixed `Maximum call stack size exceeded` in `Node#toJSON`.
++* Fixed docs (by inokawa).
++
++## 8.2.5
++* Fixed escaped characters handling in `list.split` (by Natalie Weizenbaum).
++
++## 8.2.4
++* Added plugin name to `postcss.plugin()` warning (by Tom Williams).
++* Fixed docs (by Bill Columbia).
++
++## 8.2.3
++* Fixed `JSON.stringify(Node[])` support (by Niklas Mischkulnig).
++
++## 8.2.2
++* Fixed CSS-in-JS support (by James Garbutt).
++* Fixed plugin types (by Ludovico Fischer).
++* Fixed `Result#warn()` types.
++
++## 8.2.1
++* Fixed `Node#toJSON()` and `postcss.fromJSON()` (by Niklas Mischkulnig).
++
++## 8.2 “Prince Orobas”
++* Added `Node#toJSON()` and `postcss.fromJSON()` (by Niklas Mischkulnig).
++
++## 8.1.14
++* Fixed parser performance regression.
++
++## 8.1.13
++* Fixed broken AST after moving nodes in visitor API.
++
++## 8.1.12
++* Fixed Autoprefixer regression.
++
++## 8.1.11
++* Added PostCSS update suggestion on unknown event in plugin.
++
++## 8.1.10
++* Fixed `LazyResult` type export (by Evan You).
++* Fixed `LazyResult` type compatibility with `Promise` (by Anton Kastritskiy).
++
++## 8.1.9
++* Reduced dependencies number (by Bogdan Chadkin).
++
++## 8.1.8
++* Fixed `LazyResult` type compatibility with `Promise` (by Ludovico Fischer).
++* Fixed HTTPS links in documentation.
++
++## 8.1.7
++* Fixed `import` support in TypeScript (by Remco Haszing).
++
++## 8.1.6
++* Reverted `package.exports` Node.js 15 fix.
++
++## 8.1.5
++* Fixed Node.js 15 warning (by 沈鸿飞).
++
++## 8.1.4
++* Fixed TypeScript definition (by Arthur Petrie).
++
++## 8.1.3
++* Added `package.types`.
++
++## 8.1.2
++* Fixed API docs (by Arthur Petrie).
++* Improved plugin guide (by Yunus Gaziev).
++* Prepared code base for Deno support (by Oscar Otero).
++
++## 8.1.1
++* Updated funding link.
++
++## 8.1 “Duke Gemory”
++* Added `Once` and `OnceExit` events.
++* Fixed `Root` and `RootExit` events re-visiting.
++* Fixed node re-visiting on deep children changes.
++* Added docs for visitor API events.
++
++## 8.0.9
++* Replace prototype in PostCSS 7 nodes instead of recreating them.
++* Added missed `Transformer` to exported types (by Pierre-Marie Dartus).
++
++## 8.0.8
++* Fix `8.0.7` regression on PostCSS 7 nodes converting (by Adam Wathan).
++
++## 8.0.7
++* Fixed compatibility issue with mixin AST with PostCSS 7 and 8 nodes.
++* Added migration guide translation to Chinese to the warning.
++
++## 8.0.6
++* Fixed child adding methods in `Container`.
++
++## 8.0.5
++* Update changelog.
++
++## 8.0.4
++* Fixed `Cannot read property 'line' of null` error.
++* Fixed source map support for declarations.
++
++## 8.0.3
++* Fixed client-side bundling support.
++
++## 8.0.2
++* Fixed plugin packs support.
++
++## 8.0.1
++* Updated `Processor#version`.
++
++## 8.0 “President Ose”
++* Removed support for Node.js 6.x, 8.x, 11.x, and 13.x versions.
++* Removed `postcss.vendor` helpers.
++* Deprecated `postcss.plugin()` API.
++* Treats `sourceMap.sources` as URL instead of file path.
++* Plugins and runners must have `postcss` in `peerDependencies`.
++* Prohibited to extend PostCSS AST classes.
++* Moved from JSDoc to TypeDoc.
++* Moved unknown source from counter to random IDs.
++* Added visitor API for plugins (by Alexey Bondarenko).
++* Added ES modules support.
++* Added named exports for public classes `const { Rule } = require('postcss)`.
++* Added `position.url` to `Node#origin()` result.
++* Added `opts.maps.absolute = true` option.
++* Added `opts.maps.annotation = (file, root) => url` option support.
++* Added `Node#source.offset` (by Ayaz Zaynutdinov).
++* Added `Declaration#variable`.
++* Added JSON source map support.
++* Added index source map support.
++* Added `Declaration#value` auto-converting to string.
++* Fixed parsing `{}` in at-rule parameters.
++* Fixed parsing empty Custom Properties. `--foo: ;` will have ` ` value.
++* Fixed building PostCSS with Rollup (by MapGrid).
++* Fixed TypeScript types.
++* Fixed source map relative paths.
++* Fixed calling `replaceWith` with input replaced node (by Joseph Kaptur).
++* Improved “Writing a PostCSS Plugin” docs (by Alexey Bondarenko).
++* Removed Babel from the project’s release process.
++* Removed docs from npm package.
++* Replaced `chalk` to `colorette`.
++
++## 7.0.35
++* Add migration guide link to PostCSS 8 error text.
++
++## 7.0.34
++* Fix compatibility with `postcss-scss` 2.
++
++## 7.0.33
++* Add error message for PostCSS 8 plugins.
++
++## 7.0.32
++* Fix error message (by @admosity).
++
++## 7.0.31
++* Use only the latest source map annotation (by Emmanouil Zoumpoulakis).
++
++## 7.0.30
++* Fix TypeScript definition (by Natalie Weizenbaum).
++
++## 7.0.29
++* Update `Processor#version`.
++
++## 7.0.28
++* Fix TypeScript definition (by Natalie Weizenbaum).
++
++## 7.0.27
++* Fix TypeScript definition (by Natalie Weizenbaum).
++
++## 7.0.26
++* Fix TypeScript definition (by Natalie Weizenbaum).
++
++## 7.0.25
++* Fix absolute path support for Windows (by Tom Raviv).
++
++## 7.0.24
++* Fix TypeScript definition (by Keith Cirkel).
++
++## 7.0.23
++* Update `Processor#version`.
++
++## 7.0.22
++* Add funding link for `npm fund`.
++
++## 7.0.21
++* Revert passing `nodes` property to node constructor.
++
++## 7.0.20
++* Allow to pass PostCSS’s nodes in `nodes` property to node constructor.
++
++## 7.0.19
++* Fix passing `nodes` property to node constructor.
++
++## 7.0.18
++* Fix TypeScript type definitions (by Jan Buschtöns).
++
++## 7.0.17
++* Fix TypeScript type definitions (by Bob Matcuk and Jan Buschtöns).
++
++## 7.0.16
++* Revert Custom Properties fix until PostCSS 8.0.
++
++## 7.0.15
++* Fix Custom Properties support (by Ivan Solovev).
++
++## 7.0.14
++* Fix tokenizer for `postcss-less` (by Matt Lyons).
++
++## 7.0.13
++* Fix parsing regression in 7.0.12 for comments between property and value.
++
++## 7.0.12
++* Fix parsing broken CSS with two words in declaration property.
++
++## 7.0.11
++* Fix source maps on declaration semicolon (by Niklas Mischkulnig).
++
++## 7.0.10
++* Fix source maps (by Niklas Mischkulnig).
++
++## 7.0.9
++* Increase stringifing performance for non-raws AST.
++
++## 7.0.8
++* Fix TypeScript definitions (by Ankur Oberoi).
++* Use `support-colors` 6.0.
++
++## 7.0.7
++* Extend `Error` in `CssSyntaxError`.
++
++## 7.0.6
++* Fix parsing files with BOM (by Veniamin Krol).
++
++## 7.0.5
++* Reduce npm package size (by Gilad Peleg).
++
++## 7.0.4
++* Fix safe parser regression.
++
++## 7.0.3
++* Fix tokenizer extendability (by Andrew Powell).
++* Reduce npm package size.
++
++## 7.0.2
++* Fix warning text (by Rui Pedro M Lima).
++
++## 7.0.1
++* Fix JSDoc (by Steven Lambert).
++
++## 7.0 “President Amy”
++* Remove Node.js 9 and Node.js 4 support.
++* Remove IE and “dead” browsers support for client-side Babel transpiling.
++* Add CSS position on error happened inside `walk()` (by Nikhil Gaba).
++* Add `LazyResult#finally` (by Igor Kamyshev).
++* Add warning on calling PostCSS without plugins and syntax options.
++* Reduce client-side size.
++
++## 6.0.23
++* Fix parsing nested at-rules without semicolon, params, and spaces.
++* Fix docs (by Kevin Schiffer and Pat Cavit).
++
++## 6.0.22
++* Fix `Node#prev` and `Node#next` on missed parent.
++
++## 6.0.21
++* Rename Chinese docs to fix `yarnpkg.com` issue.
++
++## 6.0.20
++* Better error message on `null` as input CSS.
++
++## 6.0.19
++* Fix TypeScript definitions for source maps (by Oleh Kuchuk).
++* Fix `source` field in TypeScript definitions (by Sylvain Pollet-Villard).
++
++## 6.0.18
++* Use primitive object in TypeScript definitions (by Sylvain Pollet-Villard).
++
++## 6.0.17
++* Fix parsing comment in selector between word tokens (by Oleh Kuchuk).
++
++## 6.0.16
++* Fix warning text (by Michael Keller).
++
++## 6.0.15
++* Add warning about missed `from` option on `process().then()` call.
++* Add IE 10 support.
++
++## 6.0.14
++* Fix TypeScript definitions (by Jed Mao).
++
++## 6.0.13
++* Fix TypeScript definitions for case of multiple PostCSS versions
++  in `node_modules` (by Chris Eppstein).
++* Use `source-map` 0.6.
++
++## 6.0.12
++* Don’t copy `*` hack to declaration indent.
++
++## 6.0.11
++* Add upper case `!IMPORTANT` support.
++
++## 6.0.10
++* Reduce PostCSS size in webpack bundle.
++
++## 6.0.9
++* Improve error message for plugin with old PostCSS (by Igor Adamenko).
++
++## 6.0.8
++* Fix Node.js 4.2.2 support.
++
++## 6.0.7
++* Fix base64 decoding for old Node.js and browser.
++
++## 6.0.6
++* Fix `end` position in at-rule without semicolon (by Oleh Kuchuk).
++
++## 6.0.5
++* Move Babel config from `package.json` for `node_modules` compiling cases.
++
++## 6.0.4
++* Fix parsing `;;` after rules.
++* Use Chalk 2.0.
++
++## 6.0.3
++* Fix escape sequences parsing (by Oleh Kuchuk).
++* Added ability to force disable colors with an environment variable.
++* Improved color detection of some terminal apps.
++
++## 6.0.2
++* Keep `raws.before` on moving `Root` children to new `Root`.
++
++## 6.0.1
++* Fix parser extensibility to use it in Safe Parser.
++
++## 6.0 “Marquis Orias”
++* Remove node.js 0.12 support.
++* Remove deprecated method from PostCSS 4.
++* Insert methods remove child from previous parent, instead of closing.
++* Insert methods and cloning doesn’t clean `raws` anymore.
++* Methods `moveTo`, `moveAfter`, `moveBefore` were deprecated.
++* Options was changed in `Plugin#process(css, processOptions, pluginOptions)`.
++* Add stream parser to reduce memory usage (by Oleh Kuchuk).
++* Add `before()`/`after()` shortcuts for `node.parent.insertBefore(node, x)`.
++* Add `Rule#raws.ownSemicolon` for semicolon after templates for `@apply`.
++* Use `babel-preset-env` to compile npm package.
++* Remove `js-base64` from dependencies (by Roman Dvornov).
++* Fix error message on single `:` in CSS.
++* Move tests to Jest.
++* Clean up test (by Gabriel Kalani).
++
++## 5.2.18
++* Fix TypeScript definitions for case of multiple PostCSS versions
++  in `node_modules` (by Chris Eppstein).
++
++## 5.2.17
++* Add `postcss-sass` suggestion to syntax error on `.sass` input.
++
++## 5.2.16
++* Better error on wrong argument in node constructor.
++
++## 5.2.15
++* Fix TypeScript definitions (by bumbleblym).
++
++## 5.2.14
++* Fix browser bundle building in webpack (by janschoenherr).
++
++## 5.2.13
++* Do not add comment to important raws.
++* Fix JSDoc (by Dmitry Semigradsky).
++
++## 5.2.12
++* Fix typo in deprecation message (by Garet McKinley).
++
++## 5.2.11
++* Fix TypeScript definitions (by Jed Mao).
++
++## 5.2.10
++* Fix TypeScript definitions (by Jed Mao).
++
++## 5.2.9
++* Update TypeScript definitions (by Jed Mao).
++
++## 5.2.8
++* Fix error message (by Ben Briggs).
++
++## 5.2.7
++* Better error message on syntax object in plugins list.
++
++## 5.2.6
++* Fix `postcss.vendor` for values with spaces (by 刘祺).
++
++## 5.2.5
++* Better error message on unclosed string (by Ben Briggs).
++
++## 5.2.4
++* Improve terminal CSS syntax highlight (by Simon Lydell).
++
++## 5.2.3
++* Better color highlight in syntax error code frame.
++* Fix color highlight support in old systems.
++
++## 5.2.2
++* Update `Processor#version`.
++
++## 5.2.1
++* Fix source map path for CSS without `from` option (by Michele Locati).
++
++## 5.2 “Duke Vapula”
++* Add syntax highlight to code frame in syntax error (by Andrey Popp).
++* Use Babel code frame style and size in syntax error.
++* Add `[` and `]` tokens to parse `[attr=;] {}` correctly.
++* Add `ignoreErrors` options to tokenizer (by Andrey Popp).
++* Fix error position on tab indent (by Simon Lydell).
++
++## 5.1.2
++* Suggests SCSS/Less parsers on parse errors depends on file extension.
++
++## 5.1.1
++* Fix TypeScript definitions (by Efremov Alexey).
++
++## 5.1 “King and President Zagan”
++* Add URI in source map support (by Mark Finger).
++* Add `map.from` option (by Mark Finger).
++* Add `<no source>` mappings for nodes without source (by Bogdan Chadkin).
++* Add function value support to `map.prev` option (by Chris Montoro).
++* Add declaration value type check in shortcut creating (by 刘祺).
++* `Result#warn` now returns new created warning.
++* Don’t call plugin creator in `postcss.plugin` call.
++* Add source maps to PostCSS ES5 build.
++* Add JSDoc to PostCSS classes.
++* Clean npm package from unnecessary docs.
++
++## 5.0.21
++* Fix support with input source mao with `utf8` encoding name.
++
++## 5.0.20
++* Fix between raw value parsing (by David Clark).
++* Update TypeScript definitions (by Jed Mao).
++* Clean fake node.source after `append(string)`.
++
++## 5.0.19
++* Fix indent-based syntaxes support.
++
++## 5.0.18
++* Parse new lines according W3C CSS syntax specification.
++
++## 5.0.17
++* Fix options argument in `Node#warn` (by Ben Briggs).
++* Fix TypeScript definitions (by Jed Mao).
++
++## 5.0.16
++* Fix CSS syntax error position on unclosed quotes.
++
++## 5.0.15
++* Fix `Node#clone()` on `null` value somewhere in node.
++
++## 5.0.14
++* Allow to use PostCSS in webpack bundle without JSON loader.
++
++## 5.0.13
++* Fix `index` and `word` options in `Warning#toString` (by Bogdan Chadkin).
++* Fix input source content loading in errors.
++* Fix map options on using `LazyResult` as input CSS.
++* 100% test coverage.
++* Use Babel 6.
++
++## 5.0.12
++* Allow passing a previous map with no mappings (by Andreas Lind).
++
++## 5.0.11
++* Increase plugins performance by 1.5 times.
++
++## 5.0.10
++* Fix warning from nodes without source.
++
++## 5.0.9
++* Fix source map type detection (by @asan).
++
++## 5.0.8
++* Fixed a missed step in `5.0.7` that caused the module to be published as
++  ES6 code.
++
++## 5.0.7
++* PostCSS now requires that node 0.12 is installed via the engines property
++  in package.json (by Howard Zuo).
++
++## 5.0.6
++* Fix parsing nested at-rule without semicolon (by Matt Drake).
++* Trim `Declaration#value` (by Bogdan Chadkin).
++
++## 5.0.5
++* Fix multi-tokens property parsing (by Matt Drake).
++
++## 5.0.4
++* Fix start position in `Root#source`.
++* Fix source map annotation, when CSS uses `\r\n` (by Mohammad Younes).
++
++## 5.0.3
++* Fix `url()` parsing.
++* Fix using `selectors` in `Rule` constructor.
++* Add start source to `Root` node.
++
++## 5.0.2
++* Fix `remove(index)` to be compatible with 4.x plugin.
++
++## 5.0.1
++* Fix PostCSS 4.x plugins compatibility.
++* Fix type definition loading (by Jed Mao).
++
++## 5.0 “President Valac”
++* Remove `safe` option. Move Safe Parser to separate project.
++* `Node#toString` does not include `before` for root nodes.
++* Remove plugin returning `Root` API.
++* Remove Promise polyfill for node.js 0.10.
++* Deprecate `eachInside`, `eachDecl`, `eachRule`, `eachAtRule` and `eachComment`
++  in favor of `walk`, `walkDecls`, `walkRules`, `walkAtRules` and `walkComments`
++  (by Jed Mao).
++* Deprecate `Container#remove` and `Node#removeSelf`
++  in favor of `Container#removeChild` and `Node#remove` (by Ben Briggs).
++* Deprecate `Node#replace` in favor of `replaceWith` (by Ben Briggs).
++* Deprecate raw properties in favor of `Node#raws` object.
++* Deprecate `Node#style` in favor of `raw`.
++* Deprecate `CssSyntaxError#generated` in favor of `input`.
++* Deprecate `Node#cleanStyles` in favor of `cleanRaws`.
++* Deprecate `Root#prevMap` in favor of `Root.source.input.map`.
++* Add `syntax`, `parser` and `stringifier` options for Custom Syntaxes.
++* Add stringifier option to `Node#toString`.
++* Add `Result#content` alias for non-CSS syntaxes.
++* Add `plugin.process(css)` shortcut to every plugin function (by Ben Briggs).
++* Add multiple nodes support to insert methods (by Jonathan Neal).
++* Add `Node#warn` shortcut (by Ben Briggs).
++* Add `word` and `index` options to errors and warnings (by David Clark).
++* Add `line`, `column` properties to `Warning`.
++* Use `supports-color` library to detect color support in error output.
++* Add type definitions for TypeScript plugin developers (by Jed Mao).
++* `Rule#selectors` setter detects separators.
++* Add `postcss.stringify` method.
++* Throw descriptive errors for incorrectly formatted plugins.
++* Add docs to npm release.
++* Fix `url()` parsing.
++* Fix Windows support (by Jed Mao).
++
++## 4.1.16
++* Fix errors without stack trace.
++
++## 4.1.15
++* Allow asynchronous plugins to change processor plugins list (by Ben Briggs).
++
++## 4.1.14
++* Fix for plugins packs defined by `postcss.plugin`.
++
++## 4.1.13
++* Fix input inlined source maps with UTF-8 encoding.
++
++## 4.1.12
++* Update Promise polyfill.
++
++## 4.1.11
++* Fix error message on wrong plugin format.
++
++## 4.1.10
++* Fix Promise behavior on sync plugin errors.
++* Automatically fill `plugin` field in `CssSyntaxError`.
++* Fix warning message (by Ben Briggs).
++
++## 4.1.9
++* Speed up `node.clone()`.
++
++## 4.1.8
++* Accepts `Processor` instance in `postcss()` constructor too.
++
++## 4.1.7
++* Speed up `postcss.list` (by Bogdan Chadkin).
++
++## 4.1.6
++* Fix Promise behavior on parsing error.
++
++## 4.1.5
++* Parse at-words in declaration values.
++
++## 4.1.4
++* Fix Promise polyfill dependency (by Anton Yakushev and Matija Marohnić).
++
++## 4.1.3
++* Add Promise polyfill for node.js 0.10 and IE.
++
++## 4.1.2
++* List helpers can be accessed independently `var space = postcss.list.space`.
++
++## 4.1.1
++* Show deprecated message only once.
++
++## 4.1 “Marquis Andras”
++* Asynchronous plugin support.
++* Add warnings from plugins and `Result#messages`.
++* Add `postcss.plugin()` to create plugins with a standard API.
++* Insert nodes by CSS string.
++* Show version warning message on error from an outdated plugin.
++* Send `Result` instance to plugins as the second argument.
++* Add `CssSyntaxError#plugin`.
++* Add `CssSyntaxError#showSourceCode()`.
++* Add `postcss.list` and `postcss.vendor` aliases.
++* Add `Processor#version`.
++* Parse wrong closing bracket.
++* Parse `!important` statement with spaces and comments inside (by Ben Briggs).
++* Throw an error on declaration without `prop` or `value` (by Philip Peterson).
++* Fix source map mappings position.
++* Add indexed source map support.
++* Always set `error.generated`.
++* Clean all source map annotation comments.
++
++## 4.0.6
++* Remove `babel` from released package dependencies (by Andres Suarez).
++
++## 4.0.5
++* Fix error message on double colon in declaration.
++
++## 4.0.4
++* Fix indent detection in some rare cases.
++
++## 4.0.3
++* Faster API with 6to5 Loose mode.
++* Fix indexed source maps support.
++
++## 4.0.2
++* Do not copy IE hacks to code style.
++
++## 4.0.1
++* Add `source.input` to `Root` too.
++
++## 4.0 “Duke Flauros”
++* Rename `Container#childs` to `nodes`.
++* Rename `PostCSS#processors` to `plugins`.
++* Add `Node#replaceValues()` method.
++* Add `Node#moveTo()`, `moveBefore()` and `moveAfter()` methods.
++* Add `Node#cloneBefore()` and `cloneAfter()` shortcuts.
++* Add `Node#next()`, `prev()` and `root()` shortcuts.
++* Add `Node#replaceWith()` method.
++* Add `Node#error()` method.
++* Add `Container#removeAll()` method.
++* Add filter argument to `eachDecl()` and `eachAtRule()`.
++* Add `Node#source.input` and move `source.file` or `source.id` to `input`.
++* Change code indent, when node was moved.
++* Better fix code style on `Rule`, `AtRule` and `Comment` nodes changes.
++* Allow to create rules and at-rules by hash shortcut in append methods.
++* Add class name to CSS syntax error output.
++
++## 3.0.7
++* Fix IE filter parsing with multiple commands.
++* Safer way to consume PostCSS object as plugin (by Maxime Thirouin).
++
++## 3.0.6
++* Fix missing semicolon when comment comes after last declaration.
++* Fix Safe Mode declaration parsing on unclosed blocks.
++
++## 3.0.5
++* Fix parser to support difficult cases with backslash escape and brackets.
++* Add `CssSyntaxError#stack` (by Maxime Thirouin).
++
++## 3.0.4
++* Fix Safe Mode on unknown word before declaration.
++
++## 3.0.3
++* Increase tokenizer speed (by Roman Dvornov).
++
++## 3.0.2
++* Fix empty comment parsing.
++* Fix `Root#normalize` in some inserts.
++
++## 3.0.1
++* Fix Rhino JS runtime support.
++* Typo in deprecated warning (by Maxime Thirouin).
++
++## 3.0 “Marquis Andrealphus”
++* New parser, which become the fastest ever CSS parser written in JavaScript.
++* Parser can now parse declarations and rules in one parent (like in `@page`)
++  and nested declarations for plugins like `postcss-nested`.
++* Child nodes array is now in `childs` property, instead of `decls` and `rules`.
++* `map.inline` and `map.sourcesContent` options are now `true` by default.
++* Fix iterators (`each`, `insertAfter`) on children array changes.
++* Use previous source map to show origin source of CSS syntax error.
++* Use 6to5 ES6 compiler, instead of ES6 Transpiler.
++* Use code style for manually added rules from existing rules.
++* Use `from` option from previous source map `file` field.
++* Set `to` value to `from` if `to` option is missing.
++* Use better node source name when missing `from` option.
++* Show a syntax error when `;` is missed between declarations.
++* Allow to pass `PostCSS` instance or list of plugins to `use()` method.
++* Allow to pass `Result` instance to `process()` method.
++* Trim Unicode BOM on source maps parsing.
++* Parse at-rules without spaces like `@import"file"`.
++* Better previous `sourceMappingURL` annotation comment cleaning.
++* Do not remove previous `sourceMappingURL` comment on `map.annotation: false`.
++* Parse nameless at-rules in Safe Mode.
++* Fix source map generation for nodes without source.
++* Fix next child `before` if `Root` first child got removed.
++
++## 2.2.6
++* Fix map generation for nodes without source (by Josiah Savary).
++
++## 2.2.5
++* Fix source map with BOM marker support (by Mohammad Younes).
++* Fix source map paths (by Mohammad Younes).
++
++## 2.2.4
++* Fix `prepend()` on empty `Root`.
++
++## 2.2.3
++* Allow to use object shortcut in `use()` with functions like `autoprefixer`.
++
++## 2.2.2
++* Add shortcut to set processors in `use()` via object with `.postcss` property.
++
++## 2.2.1
++* Send `opts` from `Processor#process(css, opts)` to processors.
++
++## 2.2 “Marquis Cimeies”
++* Use GNU style syntax error messages.
++* Add `Node#replace` method.
++* Add `CssSyntaxError#reason` property.
++
++## 2.1.2
++* Fix UTF-8 support in inline source map.
++* Fix source map `sourcesContent` if there is no `from` and `to` options.
++
++## 2.1.1
++* Allow to miss `to` and `from` options for inline source maps.
++* Add `Node#source.id` if file name is unknown.
++* Better detect splitter between rules in CSS concatenation tools.
++* Automatically clone node in insert methods.
++
++## 2.1 “King Amdusias”
++* Change Traceur ES6 compiler to ES6 Transpiler.
++* Show broken CSS line in syntax error.
++
++## 2.0 “King Belial”
++* Project was rewritten from CoffeeScript to ES6.
++* Add Safe Mode to works with live input or with hacks from legacy code.
++* More safer parser to pass all hacks from Browserhacks.com.
++* Use real properties instead of magic getter/setter for raw properties.
++
++## 1.0 “Marquis Decarabia”
++* Save previous source map for each node to support CSS concatenation
++  with multiple previous maps.
++* Add `map.sourcesContent` option to add origin content to `sourcesContent`
++  inside map.
++* Allow to set different place of output map in annotation comment.
++* Allow to use arrays and `Root` in `Container#append` and same methods.
++* Add `Root#prevMap` with information about previous map.
++* Allow to use latest PostCSS from GitHub by npm.
++* `Result` now is lazy and it will generate output CSS only if you use `css`
++  or `map` property.
++* Use separated `map.prev` option to set previous map.
++* Rename `inlineMap` option to `map.inline`.
++* Rename `mapAnnotation` option to `map.annotation`.
++* `Result#map` now return `SourceMapGenerator` object, instead of string.
++* Run previous map autodetect only if input CSS contains annotation comment.
++* Add `map: 'inline'` shortcut for `map: { inline: true }` option.
++* `Node#source.file` now will contains absolute path.
++* Clean `Declaration#between` style on node clone.
++
++## 0.3.5
++* Allow to use `Root` or `Result` as first argument in `process()`.
++* Save parsed AST to `Result#root`.
++
++## 0.3.4
++* Better space symbol detect to read UTF-8 BOM correctly.
++
++## 0.3.3
++* Remove source map hacks by using new Mozilla’s `source-map` (by Simon Lydell).
++
++## 0.3.2
++* Add URI encoding support for inline source maps.
++
++## 0.3.1
++* Fix relative paths from previous source map.
++* Safer space split in `Rule#selectors` (by Simon Lydell).
++
++## 0.3 “Prince Seere”
++* Add `Comment` node for comments between declarations or rules.
++* Add source map annotation comment to output CSS.
++* Allow to inline source map to annotation comment by data:uri.
++* Fix source maps on Windows.
++* Fix source maps for subdirectory (by Dmitry Nikitenko and Simon Lydell).
++* Autodetect previous source map.
++* Add `first` and `last` shortcuts to container nodes.
++* Parse `!important` to separated property in `Declaration`.
++* Allow to break iteration by returning `false`.
++* Copy code style to new nodes.
++* Add `eachInside` method to recursively iterate all nodes.
++* Add `selectors` shortcut to get selectors array.
++* Add `toResult` method to `Rule` to simplify work with several input files.
++* Clean declaration’s `value`, rule’s `selector` and at-rule’s `params`
++  by storing spaces in `between` property.
++
++## 0.2 “Duke Dantalion”
++* Add source map support.
++* Add shortcuts to create nodes.
++* Method `process()` now returns object with `css` and `map` keys.
++* Origin CSS file option was renamed from `file` to `from`.
++* Rename `Node#remove()` method to `removeSelf()` to fix name conflict.
++* Node source was moved to `source` property with origin file
++  and node end position.
++* You can set own CSS generate function.
++
++## 0.1 “Count Andromalius”
++* Initial release.
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/README.md b/node_modules/postcss-safe-parser/node_modules/postcss/README.md
+index 50e5841..f77285c 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/README.md
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/README.md
+@@ -40,5 +40,491 @@ at <postcss@evilmartians.com>.
+ </a>
+ 
+ 
+-## Docs
+-Read **[full docs](https://github.com/postcss/postcss#readme)** on GitHub.
++## Sponsorship
++
++PostCSS needs your support. We are accepting donations
++[at Open Collective](https://opencollective.com/postcss/).
++
++<a href="https://tailwindcss.com/">
++  <img src="https://refactoringui.nyc3.cdn.digitaloceanspaces.com/tailwind-logo.svg"
++       alt="Sponsored by Tailwind CSS" width="273" height="64">
++</a>
++
++
++## Plugins
++
++Currently, PostCSS has more than 200 plugins. You can find all of the plugins
++in the [plugins list] or in the [searchable catalog]. Below is a list
++of our favorite plugins — the best demonstrations of what can be built
++on top of PostCSS.
++
++If you have any new ideas, [PostCSS plugin development] is really easy.
++
++[searchable catalog]: https://www.postcss.parts/
++[plugins list]:       https://github.com/postcss/postcss/blob/main/docs/plugins.md
++
++
++### Solve Global CSS Problem
++
++* [`postcss-use`] allows you to explicitly set PostCSS plugins within CSS
++  and execute them only for the current file.
++* [`postcss-modules`] and [`react-css-modules`] automatically isolate
++  selectors within components.
++* [`postcss-autoreset`] is an alternative to using a global reset
++  that is better for isolatable components.
++* [`postcss-initial`] adds `all: initial` support, which resets
++  all inherited styles.
++* [`cq-prolyfill`] adds container query support, allowing styles that respond
++  to the width of the parent.
++
++
++### Use Future CSS, Today
++
++* [`autoprefixer`] adds vendor prefixes, using data from Can I Use.
++* [`postcss-preset-env`] allows you to use future CSS features today.
++
++
++### Better CSS Readability
++
++* [`precss`] contains plugins for Sass-like features, like variables, nesting,
++  and mixins.
++* [`postcss-sorting`] sorts the content of rules and at-rules.
++* [`postcss-utilities`] includes the most commonly used shortcuts and helpers.
++* [`short`] adds and extends numerous shorthand properties.
++
++
++### Images and Fonts
++
++* [`postcss-assets`] inserts image dimensions and inlines files.
++* [`postcss-sprites`] generates image sprites.
++* [`font-magician`] generates all the `@font-face` rules needed in CSS.
++* [`postcss-inline-svg`] allows you to inline SVG and customize its styles.
++* [`postcss-write-svg`] allows you to write simple SVG directly in your CSS.
++* [`webp-in-css`] to use WebP image format in CSS background.
++* [`avif-in-css`] to use AVIF image format in CSS background.
++
++### Linters
++
++* [`stylelint`] is a modular stylesheet linter.
++* [`stylefmt`] is a tool that automatically formats CSS
++  according `stylelint` rules.
++* [`doiuse`] lints CSS for browser support, using data from Can I Use.
++* [`colorguard`] helps you maintain a consistent color palette.
++
++
++### Other
++
++* [`postcss-rtl`] combines both-directional (left-to-right and right-to-left) styles in one CSS file.
++* [`cssnano`] is a modular CSS minifier.
++* [`lost`] is a feature-rich `calc()` grid system.
++* [`rtlcss`] mirrors styles for right-to-left locales.
++
++[PostCSS plugin development]:   https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md
++[`postcss-inline-svg`]:         https://github.com/TrySound/postcss-inline-svg
++[`postcss-preset-env`]:         https://github.com/jonathantneal/postcss-preset-env
++[`react-css-modules`]:          https://github.com/gajus/react-css-modules
++[`postcss-autoreset`]:          https://github.com/maximkoretskiy/postcss-autoreset
++[`postcss-write-svg`]:          https://github.com/jonathantneal/postcss-write-svg
++[`postcss-utilities`]:          https://github.com/ismamz/postcss-utilities
++[`postcss-initial`]:            https://github.com/maximkoretskiy/postcss-initial
++[`postcss-sprites`]:            https://github.com/2createStudio/postcss-sprites
++[`postcss-modules`]:            https://github.com/outpunk/postcss-modules
++[`postcss-sorting`]:            https://github.com/hudochenkov/postcss-sorting
++[`postcss-assets`]:             https://github.com/assetsjs/postcss-assets
++[`font-magician`]:              https://github.com/jonathantneal/postcss-font-magician
++[`autoprefixer`]:               https://github.com/postcss/autoprefixer
++[`cq-prolyfill`]:               https://github.com/ausi/cq-prolyfill
++[`postcss-rtl`]:                https://github.com/vkalinichev/postcss-rtl
++[`postcss-use`]:                https://github.com/postcss/postcss-use
++[`css-modules`]:                https://github.com/css-modules/css-modules
++[`webp-in-css`]:                https://github.com/ai/webp-in-css
++[`avif-in-css`]:                https://github.com/nucliweb/avif-in-css
++[`colorguard`]:                 https://github.com/SlexAxton/css-colorguard
++[`stylelint`]:                  https://github.com/stylelint/stylelint
++[`stylefmt`]:                   https://github.com/morishitter/stylefmt
++[`cssnano`]:                    https://cssnano.co/
++[`precss`]:                     https://github.com/jonathantneal/precss
++[`doiuse`]:                     https://github.com/anandthakker/doiuse
++[`rtlcss`]:                     https://github.com/MohammadYounes/rtlcss
++[`short`]:                      https://github.com/jonathantneal/postcss-short
++[`lost`]:                       https://github.com/peterramsing/lost
++
++## Syntaxes
++
++PostCSS can transform styles in any syntax, not just CSS.
++If there is not yet support for your favorite syntax,
++you can write a parser and/or stringifier to extend PostCSS.
++
++* [`sugarss`] is a indent-based syntax like Sass or Stylus.
++* [`postcss-syntax`] switch syntax automatically by file extensions.
++* [`postcss-html`] parsing styles in `<style>` tags of HTML-like files.
++* [`postcss-markdown`] parsing styles in code blocks of Markdown files.
++* [`postcss-jsx`] parsing CSS in template / object literals of source files.
++* [`postcss-styled`] parsing CSS in template literals of source files.
++* [`postcss-scss`] allows you to work with SCSS
++  *(but does not compile SCSS to CSS)*.
++* [`postcss-sass`] allows you to work with Sass
++    *(but does not compile Sass to CSS)*.
++* [`postcss-less`] allows you to work with Less
++  *(but does not compile LESS to CSS)*.
++* [`postcss-less-engine`] allows you to work with Less
++  *(and DOES compile LESS to CSS using true Less.js evaluation)*.
++* [`postcss-js`] allows you to write styles in JS or transform
++  React Inline Styles, Radium or JSS.
++* [`postcss-safe-parser`] finds and fixes CSS syntax errors.
++* [`midas`] converts a CSS string to highlighted HTML.
++
++[`postcss-less-engine`]: https://github.com/Crunch/postcss-less
++[`postcss-safe-parser`]: https://github.com/postcss/postcss-safe-parser
++[`postcss-syntax`]:      https://github.com/gucong3000/postcss-syntax
++[`postcss-html`]:        https://github.com/gucong3000/postcss-html
++[`postcss-markdown`]:    https://github.com/gucong3000/postcss-markdown
++[`postcss-jsx`]:         https://github.com/gucong3000/postcss-jsx
++[`postcss-styled`]:      https://github.com/gucong3000/postcss-styled
++[`postcss-scss`]:        https://github.com/postcss/postcss-scss
++[`postcss-sass`]:        https://github.com/AleshaOleg/postcss-sass
++[`postcss-less`]:        https://github.com/webschik/postcss-less
++[`postcss-js`]:          https://github.com/postcss/postcss-js
++[`sugarss`]:             https://github.com/postcss/sugarss
++[`midas`]:               https://github.com/ben-eb/midas
++
++
++## Articles
++
++* [Some things you may think about PostCSS… and you might be wrong](http://julian.io/some-things-you-may-think-about-postcss-and-you-might-be-wrong)
++* [What PostCSS Really Is; What It Really Does](https://davidtheclark.com/its-time-for-everyone-to-learn-about-postcss/)
++* [PostCSS Guides](https://webdesign.tutsplus.com/series/postcss-deep-dive--cms-889)
++
++More articles and videos you can find on [awesome-postcss](https://github.com/jjaderg/awesome-postcss) list.
++
++
++## Books
++
++* [Mastering PostCSS for Web Design](https://www.packtpub.com/web-development/mastering-postcss-web-design) by Alex Libby, Packt. (June 2016)
++
++
++## Usage
++
++You can start using PostCSS in just two steps:
++
++1. Find and add PostCSS extensions for your build tool.
++2. [Select plugins] and add them to your PostCSS process.
++
++[Select plugins]: https://www.postcss.parts/
++
++
++### CSS-in-JS
++
++The best way to use PostCSS with CSS-in-JS is [`astroturf`].
++Add its loader to your `webpack.config.js`:
++
++```js
++module.exports = {
++  module: {
++    rules: [
++      {
++        test: /\.css$/,
++        use: ['style-loader', 'postcss-loader'],
++      },
++      {
++        test: /\.jsx?$/,
++        use: ['babel-loader', 'astroturf/loader'],
++      }
++    ]
++  }
++}
++```
++
++Then create `postcss.config.js`:
++
++```js
++module.exports = {
++  plugins: [
++    require('autoprefixer'),
++    require('postcss-nested')
++  ]
++}
++```
++
++[`astroturf`]: https://github.com/4Catalyzer/astroturf
++
++
++### Parcel
++
++[Parcel] has built-in PostCSS support. It already uses Autoprefixer
++and cssnano. If you want to change plugins, create `postcss.config.js`
++in project’s root:
++
++```js
++module.exports = {
++  plugins: [
++    require('autoprefixer'),
++    require('postcss-nested')
++  ]
++}
++```
++
++Parcel will even automatically install these plugins for you.
++
++> Please, be aware of [the several issues in Version 1](https://github.com/parcel-bundler/parcel/labels/CSS%20Preprocessing). Notice, [Version 2](https://github.com/parcel-bundler/parcel/projects/5) may resolve the issues via [issue #2157](https://github.com/parcel-bundler/parcel/issues/2157).
++
++[Parcel]: https://parceljs.org
++
++
++### Webpack
++
++Use [`postcss-loader`] in `webpack.config.js`:
++
++```js
++module.exports = {
++  module: {
++    rules: [
++      {
++        test: /\.css$/,
++        exclude: /node_modules/,
++        use: [
++          {
++            loader: 'style-loader',
++          },
++          {
++            loader: 'css-loader',
++            options: {
++              importLoaders: 1,
++            }
++          },
++          {
++            loader: 'postcss-loader'
++          }
++        ]
++      }
++    ]
++  }
++}
++```
++
++Then create `postcss.config.js`:
++
++```js
++module.exports = {
++  plugins: [
++    require('precss'),
++    require('autoprefixer')
++  ]
++}
++```
++
++[`postcss-loader`]: https://github.com/postcss/postcss-loader
++
++
++### Gulp
++
++Use [`gulp-postcss`] and [`gulp-sourcemaps`].
++
++```js
++gulp.task('css', () => {
++  const postcss    = require('gulp-postcss')
++  const sourcemaps = require('gulp-sourcemaps')
++
++  return gulp.src('src/**/*.css')
++    .pipe( sourcemaps.init() )
++    .pipe( postcss([ require('precss'), require('autoprefixer') ]) )
++    .pipe( sourcemaps.write('.') )
++    .pipe( gulp.dest('build/') )
++})
++```
++
++[`gulp-sourcemaps`]: https://github.com/floridoo/gulp-sourcemaps
++[`gulp-postcss`]:    https://github.com/postcss/gulp-postcss
++
++
++### npm Scripts
++
++To use PostCSS from your command-line interface or with npm scripts
++there is [`postcss-cli`].
++
++```sh
++postcss --use autoprefixer -o main.css css/*.css
++```
++
++[`postcss-cli`]: https://github.com/postcss/postcss-cli
++
++
++### Browser
++
++If you want to compile CSS string in browser (for instance, in live edit
++tools like CodePen), just use [Browserify] or [webpack]. They will pack
++PostCSS and plugins files into a single file.
++
++To apply PostCSS plugins to React Inline Styles, JSS, Radium
++and other [CSS-in-JS], you can use [`postcss-js`] and transforms style objects.
++
++```js
++const postcss  = require('postcss-js')
++const prefixer = postcss.sync([ require('autoprefixer') ])
++
++prefixer({ display: 'flex' }) //=> { display: ['-webkit-box', '-webkit-flex', '-ms-flexbox', 'flex'] }
++```
++
++[`postcss-js`]: https://github.com/postcss/postcss-js
++[Browserify]:   http://browserify.org/
++[CSS-in-JS]:    https://github.com/MicheleBertoli/css-in-js
++[webpack]:      https://webpack.github.io/
++
++
++### Deno
++
++PostCSS also supports [Deno]:
++
++```js
++import postcss from 'https://deno.land/x/postcss/mod.js'
++import autoprefixer from 'https://dev.jspm.io/autoprefixer'
++
++const result = await postcss([autoprefixer]).process(css)
++```
++
++[Deno]: https://deno.land/
++
++
++### Runners
++
++* **Grunt**: [`@lodder/grunt-postcss`](https://github.com/C-Lodder/grunt-postcss)
++* **HTML**: [`posthtml-postcss`](https://github.com/posthtml/posthtml-postcss)
++* **Stylus**: [`poststylus`](https://github.com/seaneking/poststylus)
++* **Rollup**: [`rollup-plugin-postcss`](https://github.com/egoist/rollup-plugin-postcss)
++* **Brunch**: [`postcss-brunch`](https://github.com/brunch/postcss-brunch)
++* **Broccoli**: [`broccoli-postcss`](https://github.com/jeffjewiss/broccoli-postcss)
++* **Meteor**: [`postcss`](https://atmospherejs.com/juliancwirko/postcss)
++* **ENB**: [`enb-postcss`](https://github.com/awinogradov/enb-postcss)
++* **Taskr**: [`taskr-postcss`](https://github.com/lukeed/taskr/tree/master/packages/postcss)
++* **Start**: [`start-postcss`](https://github.com/start-runner/postcss)
++* **Connect/Express**: [`postcss-middleware`](https://github.com/jedmao/postcss-middleware)
++
++
++### JS API
++
++For other environments, you can use the JS API:
++
++```js
++const autoprefixer = require('autoprefixer')
++const postcss = require('postcss')
++const precss = require('precss')
++const fs = require('fs')
++
++fs.readFile('src/app.css', (err, css) => {
++  postcss([precss, autoprefixer])
++    .process(css, { from: 'src/app.css', to: 'dest/app.css' })
++    .then(result => {
++      fs.writeFile('dest/app.css', result.css, () => true)
++      if ( result.map ) {
++        fs.writeFile('dest/app.css.map', result.map.toString(), () => true)
++      }
++    })
++})
++```
++
++Read the [PostCSS API documentation] for more details about the JS API.
++
++All PostCSS runners should pass [PostCSS Runner Guidelines].
++
++[PostCSS Runner Guidelines]: https://github.com/postcss/postcss/blob/main/docs/guidelines/runner.md
++[PostCSS API documentation]: https://postcss.org/api/
++
++
++### Options
++
++Most PostCSS runners accept two parameters:
++
++* An array of plugins.
++* An object of options.
++
++Common options:
++
++* `syntax`: an object providing a syntax parser and a stringifier.
++* `parser`: a special syntax parser (for example, [SCSS]).
++* `stringifier`: a special syntax output generator (for example, [Midas]).
++* `map`: [source map options].
++* `from`: the input file name (most runners set it automatically).
++* `to`: the output file name (most runners set it automatically).
++
++[source map options]: https://postcss.org/api/#sourcemapoptions
++[Midas]:              https://github.com/ben-eb/midas
++[SCSS]:               https://github.com/postcss/postcss-scss
++
++
++### Treat Warnings as Errors
++
++In some situations it might be helpful to fail the build on any warning
++from PostCSS or one of its plugins. This guarantees that no warnings
++go unnoticed, and helps to avoid bugs. While there is no option to enable
++treating warnings as errors, it can easily be done
++by adding `postcss-fail-on-warn` plugin in the end of PostCSS plugins:
++
++```js
++module.exports = {
++  plugins: [
++    require('autoprefixer'),
++    require('postcss-fail-on-warn')
++  ]
++}
++```
++
++
++## Editors & IDE Integration
++
++
++### VS Code
++
++* [`csstools.postcss`] adds support for PostCSS, `postcss-preset-env`
++  and CSS Modules.
++
++[`csstools.postcss`]: https://marketplace.visualstudio.com/items?itemName=csstools.postcss
++
++
++### Atom
++
++* [`language-postcss`] adds PostCSS and [SugarSS] highlight.
++* [`source-preview-postcss`] previews your output CSS in a separate, live pane.
++
++[SugarSS]: https://github.com/postcss/sugarss
++
++
++### Sublime Text
++
++* [`Syntax-highlighting-for-PostCSS`] adds PostCSS highlight.
++
++[`Syntax-highlighting-for-PostCSS`]: https://github.com/hudochenkov/Syntax-highlighting-for-PostCSS
++[`source-preview-postcss`]:          https://atom.io/packages/source-preview-postcss
++[`language-postcss`]:                https://atom.io/packages/language-postcss
++
++
++### Vim
++
++* [`postcss.vim`] adds PostCSS highlight.
++
++[`postcss.vim`]: https://github.com/stephenway/postcss.vim
++
++
++### WebStorm
++
++WebStorm 2016.3 [has] built-in PostCSS support.
++
++[has]: https://blog.jetbrains.com/webstorm/2016/08/webstorm-2016-3-early-access-preview/
++
++
++## Security Contact
++
++To report a security vulnerability, please use the [Tidelift security contact].
++Tidelift will coordinate the fix and disclosure.
++
++[Tidelift security contact]: https://tidelift.com/security
++
++
++## For Enterprise
++
++Available as part of the Tidelift Subscription.
++
++The maintainers of `postcss` and thousands of other packages are working
++with Tidelift to deliver commercial support and maintenance for the open source
++dependencies you use to build your applications. Save time, reduce risk,
++and improve code health, while paying the maintainers of the exact dependencies
++you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-postcss?utm_source=npm-postcss&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.d.ts
+index 09e1f17..992d8c4 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.d.ts
+@@ -37,11 +37,8 @@ interface AtRuleRaws {
+ }
+ 
+ export interface AtRuleProps extends ContainerProps {
+-  /** Name of the at-rule. */
+   name: string
+-  /** Parameters following the name of the at-rule. */
+   params?: string | number
+-  /** Information used to generate byte-to-byte equal node string as it was in the origin input. */
+   raws?: AtRuleRaws
+ }
+ 
+@@ -72,7 +69,6 @@ export interface AtRuleProps extends ContainerProps {
+  */
+ export default class AtRule extends Container {
+   type: 'atrule'
+-  parent: Container | undefined
+   raws: AtRuleRaws
+ 
+   /**
+@@ -98,9 +94,8 @@ export default class AtRule extends Container {
+    */
+   params: string
+ 
+-  constructor(defaults?: AtRuleProps)
+-  assign(overrides: object | AtRuleProps): this
+-  clone(overrides?: Partial<AtRuleProps>): this
+-  cloneBefore(overrides?: Partial<AtRuleProps>): this
+-  cloneAfter(overrides?: Partial<AtRuleProps>): this
++  constructor (defaults?: AtRuleProps)
++  clone (overrides?: Partial<AtRuleProps>): this
++  cloneBefore (overrides?: Partial<AtRuleProps>): this
++  cloneAfter (overrides?: Partial<AtRuleProps>): this
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.js
+index 9486447..3f4759d 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/at-rule.js
+@@ -3,17 +3,17 @@
+ let Container = require('./container')
+ 
+ class AtRule extends Container {
+-  constructor(defaults) {
++  constructor (defaults) {
+     super(defaults)
+     this.type = 'atrule'
+   }
+ 
+-  append(...children) {
++  append (...children) {
+     if (!this.proxyOf.nodes) this.nodes = []
+     return super.append(...children)
+   }
+ 
+-  prepend(...children) {
++  prepend (...children) {
+     if (!this.proxyOf.nodes) this.nodes = []
+     return super.prepend(...children)
+   }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.d.ts
+index 1d4fd45..622df9d 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.d.ts
+@@ -1,4 +1,3 @@
+-import Container from './container.js'
+ import Node, { NodeProps } from './node.js'
+ 
+ interface CommentRaws {
+@@ -19,9 +18,7 @@ interface CommentRaws {
+ }
+ 
+ export interface CommentProps extends NodeProps {
+-  /** Content of the comment. */
+   text: string
+-  /** Information used to generate byte-to-byte equal node string as it was in the origin input. */
+   raws?: CommentRaws
+ }
+ 
+@@ -40,7 +37,6 @@ export interface CommentProps extends NodeProps {
+  */
+ export default class Comment extends Node {
+   type: 'comment'
+-  parent: Container | undefined
+   raws: CommentRaws
+ 
+   /**
+@@ -48,9 +44,8 @@ export default class Comment extends Node {
+    */
+   text: string
+ 
+-  constructor(defaults?: CommentProps)
+-  assign(overrides: object | CommentProps): this
+-  clone(overrides?: Partial<CommentProps>): this
+-  cloneBefore(overrides?: Partial<CommentProps>): this
+-  cloneAfter(overrides?: Partial<CommentProps>): this
++  constructor (defaults?: CommentProps)
++  clone (overrides?: Partial<CommentProps>): this
++  cloneBefore (overrides?: Partial<CommentProps>): this
++  cloneAfter (overrides?: Partial<CommentProps>): this
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.js
+index c566506..45ba06c 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/comment.js
+@@ -3,7 +3,7 @@
+ let Node = require('./node')
+ 
+ class Comment extends Node {
+-  constructor(defaults) {
++  constructor (defaults) {
+     super(defaults)
+     this.type = 'comment'
+   }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.d.ts
+index 2b75e37..cdd69d2 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.d.ts
+@@ -27,9 +27,7 @@ export interface ContainerProps extends NodeProps {
+  * Note that all containers can store any content. If you write a rule inside
+  * a rule, PostCSS will parse it.
+  */
+-export default abstract class Container<
+-  Child extends Node = ChildNode
+-> extends Node {
++export default abstract class Container extends Node {
+   /**
+    * An array containing the container’s children.
+    *
+@@ -40,7 +38,7 @@ export default abstract class Container<
+    * root.nodes[0].nodes[0].prop //=> 'color'
+    * ```
+    */
+-  nodes: Child[]
++  nodes: ChildNode[]
+ 
+   /**
+    * The container’s first child.
+@@ -49,7 +47,7 @@ export default abstract class Container<
+    * rule.first === rules.nodes[0]
+    * ```
+    */
+-  get first(): Child | undefined
++  get first (): ChildNode | undefined
+ 
+   /**
+    * The container’s last child.
+@@ -58,7 +56,7 @@ export default abstract class Container<
+    * rule.last === rule.nodes[rule.nodes.length - 1]
+    * ```
+    */
+-  get last(): Child | undefined
++  get last (): ChildNode | undefined
+ 
+   /**
+    * Iterates through the container’s immediate children,
+@@ -93,8 +91,8 @@ export default abstract class Container<
+    * @param callback Iterator receives each node and index.
+    * @return Returns `false` if iteration was broke.
+    */
+-  each(
+-    callback: (node: Child, index: number) => false | void
++  each (
++    callback: (node: ChildNode, index: number) => false | void
+   ): false | undefined
+ 
+   /**
+@@ -116,7 +114,7 @@ export default abstract class Container<
+    * @param callback Iterator receives each node and index.
+    * @return  Returns `false` if iteration was broke.
+    */
+-  walk(
++  walk (
+     callback: (node: ChildNode, index: number) => false | void
+   ): false | undefined
+ 
+@@ -149,11 +147,11 @@ export default abstract class Container<
+    * @param callback Iterator receives each node and index.
+    * @return Returns `false` if iteration was broke.
+    */
+-  walkDecls(
++  walkDecls (
+     propFilter: string | RegExp,
+     callback: (decl: Declaration, index: number) => false | void
+   ): false | undefined
+-  walkDecls(
++  walkDecls (
+     callback: (decl: Declaration, index: number) => false | void
+   ): false | undefined
+ 
+@@ -179,12 +177,12 @@ export default abstract class Container<
+    * @param callback Iterator receives each node and index.
+    * @return Returns `false` if iteration was broke.
+    */
+-  walkRules(
++  walkRules (
+     selectorFilter: string | RegExp,
+-    callback: (rule: Rule, index: number) => false | void
++    callback: (atRule: Rule, index: number) => false | void
+   ): false | undefined
+-  walkRules(
+-    callback: (rule: Rule, index: number) => false | void
++  walkRules (
++    callback: (atRule: Rule, index: number) => false | void
+   ): false | undefined
+ 
+   /**
+@@ -216,11 +214,11 @@ export default abstract class Container<
+    * @param callback Iterator receives each node and index.
+    * @return Returns `false` if iteration was broke.
+    */
+-  walkAtRules(
++  walkAtRules (
+     nameFilter: string | RegExp,
+     callback: (atRule: AtRule, index: number) => false | void
+   ): false | undefined
+-  walkAtRules(
++  walkAtRules (
+     callback: (atRule: AtRule, index: number) => false | void
+   ): false | undefined
+ 
+@@ -241,10 +239,10 @@ export default abstract class Container<
+    * @return Returns `false` if iteration was broke.
+    */
+ 
+-  walkComments(
++  walkComments (
+     callback: (comment: Comment, indexed: number) => false | void
+   ): false | undefined
+-  walkComments(
++  walkComments (
+     callback: (comment: Comment, indexed: number) => false | void
+   ): false | undefined
+ 
+@@ -268,7 +266,7 @@ export default abstract class Container<
+    * @param nodes New nodes.
+    * @return This node for methods chain.
+    */
+-  append(
++  append (
+     ...nodes: (Node | Node[] | ChildProps | ChildProps[] | string | string[])[]
+   ): this
+ 
+@@ -292,7 +290,7 @@ export default abstract class Container<
+    * @param nodes New nodes.
+    * @return This node for methods chain.
+    */
+-  prepend(
++  prepend (
+     ...nodes: (Node | Node[] | ChildProps | ChildProps[] | string | string[])[]
+   ): this
+ 
+@@ -306,7 +304,7 @@ export default abstract class Container<
+    * @param child New node.
+    * @return This node for methods chain.
+    */
+-  push(child: Child): this
++  push (child: ChildNode): this
+ 
+   /**
+    * Insert new node before old node within the container.
+@@ -319,9 +317,15 @@ export default abstract class Container<
+    * @param newNode New node.
+    * @return This node for methods chain.
+    */
+-  insertBefore(
+-    oldNode: Child | number,
+-    newNode: Child | ChildProps | string | Child[] | ChildProps[] | string[]
++  insertBefore (
++    oldNode: ChildNode | number,
++    newNode:
++      | ChildNode
++      | ChildProps
++      | string
++      | ChildNode[]
++      | ChildProps[]
++      | string[]
+   ): this
+ 
+   /**
+@@ -331,9 +335,15 @@ export default abstract class Container<
+    * @param newNode New node.
+    * @return This node for methods chain.
+    */
+-  insertAfter(
+-    oldNode: Child | number,
+-    newNode: Child | ChildProps | string | Child[] | ChildProps[] | string[]
++  insertAfter (
++    oldNode: ChildNode | number,
++    newNode:
++      | ChildNode
++      | ChildProps
++      | string
++      | ChildNode[]
++      | ChildProps[]
++      | string[]
+   ): this
+ 
+   /**
+@@ -350,7 +360,7 @@ export default abstract class Container<
+    * @param child Child or child’s index.
+    * @return This node for methods chain.
+    */
+-  removeChild(child: Child | number): this
++  removeChild (child: ChildNode | number): this
+ 
+   /**
+    * Removes all children from the container
+@@ -363,7 +373,7 @@ export default abstract class Container<
+    *
+    * @return This node for methods chain.
+    */
+-  removeAll(): this
++  removeAll (): this
+ 
+   /**
+    * Passes all declaration values within the container that match pattern
+@@ -388,12 +398,12 @@ export default abstract class Container<
+    *                                     of `String#replace`.
+    * @return This node for methods chain.
+    */
+-  replaceValues(
++  replaceValues (
+     pattern: string | RegExp,
+     options: ValueOptions,
+     replaced: string | { (substring: string, ...args: any[]): string }
+   ): this
+-  replaceValues(
++  replaceValues (
+     pattern: string | RegExp,
+     replaced: string | { (substring: string, ...args: any[]): string }
+   ): this
+@@ -409,8 +419,8 @@ export default abstract class Container<
+    * @param condition Iterator returns true or false.
+    * @return Is every child pass condition.
+    */
+-  every(
+-    condition: (node: Child, index: number, nodes: Child[]) => boolean
++  every (
++    condition: (node: ChildNode, index: number, nodes: ChildNode[]) => boolean
+   ): boolean
+ 
+   /**
+@@ -424,8 +434,8 @@ export default abstract class Container<
+    * @param condition Iterator returns true or false.
+    * @return Is some child pass condition.
+    */
+-  some(
+-    condition: (node: Child, index: number, nodes: Child[]) => boolean
++  some (
++    condition: (node: ChildNode, index: number, nodes: ChildNode[]) => boolean
+   ): boolean
+ 
+   /**
+@@ -438,5 +448,5 @@ export default abstract class Container<
+    * @param child Child of the current container.
+    * @return Child index.
+    */
+-  index(child: Child | number): number
++  index (child: ChildNode | number): number
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.js
+index a511a82..fc20473 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/container.js
+@@ -1,13 +1,13 @@
+ 'use strict'
+ 
+-let { isClean, my } = require('./symbols')
+ let Declaration = require('./declaration')
++let { isClean } = require('./symbols')
+ let Comment = require('./comment')
+ let Node = require('./node')
+ 
+ let parse, Rule, AtRule
+ 
+-function cleanSource(nodes) {
++function cleanSource (nodes) {
+   return nodes.map(i => {
+     if (i.nodes) i.nodes = cleanSource(i.nodes)
+     delete i.source
+@@ -15,7 +15,7 @@ function cleanSource(nodes) {
+   })
+ }
+ 
+-function markDirtyUp(node) {
++function markDirtyUp (node) {
+   node[isClean] = false
+   if (node.proxyOf.nodes) {
+     for (let i of node.proxyOf.nodes) {
+@@ -24,14 +24,33 @@ function markDirtyUp(node) {
+   }
+ }
+ 
++// istanbul ignore next
++function rebuild (node) {
++  if (node.type === 'atrule') {
++    Object.setPrototypeOf(node, AtRule.prototype)
++  } else if (node.type === 'rule') {
++    Object.setPrototypeOf(node, Rule.prototype)
++  } else if (node.type === 'decl') {
++    Object.setPrototypeOf(node, Declaration.prototype)
++  } else if (node.type === 'comment') {
++    Object.setPrototypeOf(node, Comment.prototype)
++  }
++
++  if (node.nodes) {
++    node.nodes.forEach(child => {
++      rebuild(child)
++    })
++  }
++}
++
+ class Container extends Node {
+-  push(child) {
++  push (child) {
+     child.parent = this
+     this.proxyOf.nodes.push(child)
+     return this
+   }
+ 
+-  each(callback) {
++  each (callback) {
+     if (!this.proxyOf.nodes) return undefined
+     let iterator = this.getIterator()
+ 
+@@ -48,7 +67,7 @@ class Container extends Node {
+     return result
+   }
+ 
+-  walk(callback) {
++  walk (callback) {
+     return this.each((child, i) => {
+       let result
+       try {
+@@ -64,7 +83,7 @@ class Container extends Node {
+     })
+   }
+ 
+-  walkDecls(prop, callback) {
++  walkDecls (prop, callback) {
+     if (!callback) {
+       callback = prop
+       return this.walk((child, i) => {
+@@ -87,7 +106,7 @@ class Container extends Node {
+     })
+   }
+ 
+-  walkRules(selector, callback) {
++  walkRules (selector, callback) {
+     if (!callback) {
+       callback = selector
+ 
+@@ -111,7 +130,7 @@ class Container extends Node {
+     })
+   }
+ 
+-  walkAtRules(name, callback) {
++  walkAtRules (name, callback) {
+     if (!callback) {
+       callback = name
+       return this.walk((child, i) => {
+@@ -134,7 +153,7 @@ class Container extends Node {
+     })
+   }
+ 
+-  walkComments(callback) {
++  walkComments (callback) {
+     return this.walk((child, i) => {
+       if (child.type === 'comment') {
+         return callback(child, i)
+@@ -142,7 +161,7 @@ class Container extends Node {
+     })
+   }
+ 
+-  append(...children) {
++  append (...children) {
+     for (let child of children) {
+       let nodes = this.normalize(child, this.last)
+       for (let node of nodes) this.proxyOf.nodes.push(node)
+@@ -153,7 +172,7 @@ class Container extends Node {
+     return this
+   }
+ 
+-  prepend(...children) {
++  prepend (...children) {
+     children = children.reverse()
+     for (let child of children) {
+       let nodes = this.normalize(child, this.first, 'prepend').reverse()
+@@ -168,14 +187,14 @@ class Container extends Node {
+     return this
+   }
+ 
+-  cleanRaws(keepBetween) {
++  cleanRaws (keepBetween) {
+     super.cleanRaws(keepBetween)
+     if (this.nodes) {
+       for (let node of this.nodes) node.cleanRaws(keepBetween)
+     }
+   }
+ 
+-  insertBefore(exist, add) {
++  insertBefore (exist, add) {
+     exist = this.index(exist)
+ 
+     let type = exist === 0 ? 'prepend' : false
+@@ -195,7 +214,7 @@ class Container extends Node {
+     return this
+   }
+ 
+-  insertAfter(exist, add) {
++  insertAfter (exist, add) {
+     exist = this.index(exist)
+ 
+     let nodes = this.normalize(add, this.proxyOf.nodes[exist]).reverse()
+@@ -214,7 +233,7 @@ class Container extends Node {
+     return this
+   }
+ 
+-  removeChild(child) {
++  removeChild (child) {
+     child = this.index(child)
+     this.proxyOf.nodes[child].parent = undefined
+     this.proxyOf.nodes.splice(child, 1)
+@@ -232,7 +251,7 @@ class Container extends Node {
+     return this
+   }
+ 
+-  removeAll() {
++  removeAll () {
+     for (let node of this.proxyOf.nodes) node.parent = undefined
+     this.proxyOf.nodes = []
+ 
+@@ -241,7 +260,7 @@ class Container extends Node {
+     return this
+   }
+ 
+-  replaceValues(pattern, opts, callback) {
++  replaceValues (pattern, opts, callback) {
+     if (!callback) {
+       callback = opts
+       opts = {}
+@@ -259,31 +278,31 @@ class Container extends Node {
+     return this
+   }
+ 
+-  every(condition) {
++  every (condition) {
+     return this.nodes.every(condition)
+   }
+ 
+-  some(condition) {
++  some (condition) {
+     return this.nodes.some(condition)
+   }
+ 
+-  index(child) {
++  index (child) {
+     if (typeof child === 'number') return child
+     if (child.proxyOf) child = child.proxyOf
+     return this.proxyOf.nodes.indexOf(child)
+   }
+ 
+-  get first() {
++  get first () {
+     if (!this.proxyOf.nodes) return undefined
+     return this.proxyOf.nodes[0]
+   }
+ 
+-  get last() {
++  get last () {
+     if (!this.proxyOf.nodes) return undefined
+     return this.proxyOf.nodes[this.proxyOf.nodes.length - 1]
+   }
+ 
+-  normalize(nodes, sample) {
++  normalize (nodes, sample) {
+     if (typeof nodes === 'string') {
+       nodes = cleanSource(parse(nodes).nodes)
+     } else if (Array.isArray(nodes)) {
+@@ -291,7 +310,7 @@ class Container extends Node {
+       for (let i of nodes) {
+         if (i.parent) i.parent.removeChild(i, 'ignore')
+       }
+-    } else if (nodes.type === 'root' && this.type !== 'document') {
++    } else if (nodes.type === 'root') {
+       nodes = nodes.nodes.slice(0)
+       for (let i of nodes) {
+         if (i.parent) i.parent.removeChild(i, 'ignore')
+@@ -316,8 +335,8 @@ class Container extends Node {
+     }
+ 
+     let processed = nodes.map(i => {
+-      /* c8 ignore next */
+-      if (!i[my]) Container.rebuild(i)
++      // istanbul ignore next
++      if (typeof i.markDirty !== 'function') rebuild(i)
+       i = i.proxyOf
+       if (i.parent) i.parent.removeChild(i)
+       if (i[isClean]) markDirtyUp(i)
+@@ -333,9 +352,9 @@ class Container extends Node {
+     return processed
+   }
+ 
+-  getProxyProcessor() {
++  getProxyProcessor () {
+     return {
+-      set(node, prop, value) {
++      set (node, prop, value) {
+         if (node[prop] === value) return true
+         node[prop] = value
+         if (prop === 'name' || prop === 'params' || prop === 'selector') {
+@@ -344,7 +363,7 @@ class Container extends Node {
+         return true
+       },
+ 
+-      get(node, prop) {
++      get (node, prop) {
+         if (prop === 'proxyOf') {
+           return node
+         } else if (!node[prop]) {
+@@ -383,7 +402,7 @@ class Container extends Node {
+     }
+   }
+ 
+-  getIterator() {
++  getIterator () {
+     if (!this.lastEach) this.lastEach = 0
+     if (!this.indexes) this.indexes = {}
+ 
+@@ -409,25 +428,3 @@ Container.registerAtRule = dependant => {
+ 
+ module.exports = Container
+ Container.default = Container
+-
+-/* c8 ignore start */
+-Container.rebuild = node => {
+-  if (node.type === 'atrule') {
+-    Object.setPrototypeOf(node, AtRule.prototype)
+-  } else if (node.type === 'rule') {
+-    Object.setPrototypeOf(node, Rule.prototype)
+-  } else if (node.type === 'decl') {
+-    Object.setPrototypeOf(node, Declaration.prototype)
+-  } else if (node.type === 'comment') {
+-    Object.setPrototypeOf(node, Comment.prototype)
+-  }
+-
+-  node[my] = true
+-
+-  if (node.nodes) {
+-    node.nodes.forEach(child => {
+-      Container.rebuild(child)
+-    })
+-  }
+-}
+-/* c8 ignore stop */
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.d.ts
+index 3fd0555..20f83a7 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.d.ts
+@@ -1,20 +1,5 @@
+ import { FilePosition } from './input.js'
+ 
+-/**
+- * A position that is part of a range.
+- */
+-export interface RangePosition {
+-  /**
+-   * The line number in the input.
+-   */
+-  line: number
+-
+-  /**
+-   * The column number in the input.
+-   */
+-  column: number
+-}
+-
+ /**
+  * The CSS parser throws this error for broken CSS.
+  *
+@@ -46,28 +31,22 @@ export interface RangePosition {
+  */
+ export default class CssSyntaxError {
+   /**
+-   * Instantiates a CSS syntax error. Can be instantiated for a single position
+-   * or for a range.
+-   * @param message        Error message.
+-   * @param lineOrStartPos If for a single position, the line number, or if for
+-   *                       a range, the inclusive start position of the error.
+-   * @param columnOrEndPos If for a single position, the column number, or if for
+-   *                       a range, the exclusive end position of the error.
+-   * @param source         Source code of the broken file.
+-   * @param file           Absolute path to the broken file.
+-   * @param plugin         PostCSS plugin name, if error came from plugin.
++   * @param message Error message.
++   * @param line    Source line of the error.
++   * @param column  Source column of the error.
++   * @param source  Source code of the broken file.
++   * @param file    Absolute path to the broken file.
++   * @param plugin  PostCSS plugin name, if error came from plugin.
+    */
+-  constructor(
++  constructor (
+     message: string,
+-    lineOrStartPos?: number | RangePosition,
+-    columnOrEndPos?: number | RangePosition,
++    line?: number,
++    column?: number,
+     source?: string,
+     file?: string,
+     plugin?: string
+   )
+ 
+-  stack: string
+-
+   /**
+    * Always equal to `'CssSyntaxError'`. You should always check error type
+    * by `error.name === 'CssSyntaxError'`
+@@ -140,40 +119,12 @@ export default class CssSyntaxError {
+    */
+   column?: number
+ 
+-  /**
+-   * Source line of the error's end, exclusive. Provided if the error pertains
+-   * to a range.
+-   *
+-   * ```js
+-   * error.endLine       //=> 3
+-   * error.input.endLine //=> 4
+-   * ```
+-   *
+-   * PostCSS will use the input source map to detect the original location.
+-   * If you need the position in the PostCSS input, use `error.input.endLine`.
+-   */
+-  endLine?: number
+-
+-  /**
+-   * Source column of the error's end, exclusive. Provided if the error pertains
+-   * to a range.
+-   *
+-   * ```js
+-   * error.endColumn       //=> 1
+-   * error.input.endColumn //=> 4
+-   * ```
+-   *
+-   * PostCSS will use the input source map to detect the original location.
+-   * If you need the position in the PostCSS input, use `error.input.endColumn`.
+-   */
+-  endColumn?: number
+-
+   /**
+    * Source code of the broken file.
+    *
+    * ```js
+    * error.source       //=> 'a { b {} }'
+-   * error.input.source //=> 'a b { }'
++   * error.input.column //=> 'a b { }'
+    * ```
+    */
+   source?: string
+@@ -212,7 +163,7 @@ export default class CssSyntaxError {
+    *
+    * @return Error position, message and source code.
+    */
+-  toString(): string
++  toString (): string
+ 
+   /**
+    * Returns a few lines of CSS source that caused the error.
+@@ -235,5 +186,5 @@ export default class CssSyntaxError {
+    *              and `process.env.NODE_DISABLE_COLORS`.
+    * @return Few lines of CSS source that caused the error.
+    */
+-  showSourceCode(color?: boolean): string
++  showSourceCode (color?: boolean): string
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.js
+index d6b369b..e8020c8 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/css-syntax-error.js
+@@ -1,11 +1,11 @@
+ 'use strict'
+ 
+-let pico = require('picocolors')
++let { red, bold, gray, options: colorette } = require('colorette')
+ 
+ let terminalHighlight = require('./terminal-highlight')
+ 
+ class CssSyntaxError extends Error {
+-  constructor(message, line, column, source, file, plugin) {
++  constructor (message, line, column, source, file, plugin) {
+     super(message)
+     this.name = 'CssSyntaxError'
+     this.reason = message
+@@ -20,15 +20,8 @@ class CssSyntaxError extends Error {
+       this.plugin = plugin
+     }
+     if (typeof line !== 'undefined' && typeof column !== 'undefined') {
+-      if (typeof line === 'number') {
+-        this.line = line
+-        this.column = column
+-      } else {
+-        this.line = line.line
+-        this.column = line.column
+-        this.endLine = column.line
+-        this.endColumn = column.column
+-      }
++      this.line = line
++      this.column = column
+     }
+ 
+     this.setMessage()
+@@ -38,7 +31,7 @@ class CssSyntaxError extends Error {
+     }
+   }
+ 
+-  setMessage() {
++  setMessage () {
+     this.message = this.plugin ? this.plugin + ': ' : ''
+     this.message += this.file ? this.file : '<css input>'
+     if (typeof this.line !== 'undefined') {
+@@ -47,11 +40,11 @@ class CssSyntaxError extends Error {
+     this.message += ': ' + this.reason
+   }
+ 
+-  showSourceCode(color) {
++  showSourceCode (color) {
+     if (!this.source) return ''
+ 
+     let css = this.source
+-    if (color == null) color = pico.isColorSupported
++    if (color == null) color = colorette.enabled
+     if (terminalHighlight) {
+       if (color) css = terminalHighlight(css)
+     }
+@@ -64,7 +57,6 @@ class CssSyntaxError extends Error {
+ 
+     let mark, aside
+     if (color) {
+-      let { bold, red, gray } = pico.createColors(true)
+       mark = text => bold(red(text))
+       aside = text => gray(text)
+     } else {
+@@ -87,7 +79,7 @@ class CssSyntaxError extends Error {
+       .join('\n')
+   }
+ 
+-  toString() {
++  toString () {
+     let code = this.showSourceCode()
+     if (code) {
+       code = '\n\n' + code + '\n'
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.d.ts
+index 56cfb46..223fc20 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.d.ts
+@@ -1,4 +1,3 @@
+-import Container from './container.js'
+ import Node from './node.js'
+ 
+ interface DeclarationRaws {
+@@ -28,13 +27,8 @@ interface DeclarationRaws {
+ }
+ 
+ export interface DeclarationProps {
+-  /** Name of the declaration. */
+   prop: string
+-  /** Value of the declaration. */
+   value: string
+-  /** Whether the declaration has an `!important` annotation. */
+-  important?: boolean
+-  /** Information used to generate byte-to-byte equal node string as it was in the origin input. */
+   raws?: DeclarationRaws
+ }
+ 
+@@ -57,7 +51,6 @@ export interface DeclarationProps {
+  */
+ export default class Declaration extends Node {
+   type: 'decl'
+-  parent: Container | undefined
+   raws: DeclarationRaws
+ 
+   /**
+@@ -116,9 +109,8 @@ export default class Declaration extends Node {
+    */
+   variable: boolean
+ 
+-  constructor(defaults?: DeclarationProps)
+-  assign(overrides: object | DeclarationProps): this
+-  clone(overrides?: Partial<DeclarationProps>): this
+-  cloneBefore(overrides?: Partial<DeclarationProps>): this
+-  cloneAfter(overrides?: Partial<DeclarationProps>): this
++  constructor (defaults?: DeclarationProps)
++  clone (overrides?: Partial<DeclarationProps>): this
++  cloneBefore (overrides?: Partial<DeclarationProps>): this
++  cloneAfter (overrides?: Partial<DeclarationProps>): this
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.js
+index a04bdec..41eb93e 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/declaration.js
+@@ -3,7 +3,7 @@
+ let Node = require('./node')
+ 
+ class Declaration extends Node {
+-  constructor(defaults) {
++  constructor (defaults) {
+     if (
+       defaults &&
+       typeof defaults.value !== 'undefined' &&
+@@ -15,7 +15,7 @@ class Declaration extends Node {
+     this.type = 'decl'
+   }
+ 
+-  get variable() {
++  get variable () {
+     return this.prop.startsWith('--') || this.prop[0] === '$'
+   }
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/document.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/document.d.ts
+deleted file mode 100644
+index 28a599c..0000000
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/document.d.ts
++++ /dev/null
+@@ -1,57 +0,0 @@
+-import Container, { ContainerProps } from './container.js'
+-import { ProcessOptions } from './postcss.js'
+-import Result from './result.js'
+-import Root, { RootProps } from './root.js'
+-
+-export interface DocumentProps extends ContainerProps {
+-  nodes?: Root[]
+-
+-  /**
+-   * Information to generate byte-to-byte equal node string as it was
+-   * in the origin input.
+-   *
+-   * Every parser saves its own properties.
+-   */
+-  raws?: Record<string, any>
+-}
+-
+-type ChildNode = Root
+-type ChildProps = RootProps
+-
+-/**
+- * Represents a file and contains all its parsed nodes.
+- *
+- * **Experimental:** some aspects of this node could change within minor
+- * or patch version releases.
+- *
+- * ```js
+- * const document = htmlParser(
+- *   '<html><style>a{color:black}</style><style>b{z-index:2}</style>'
+- * )
+- * document.type         //=> 'document'
+- * document.nodes.length //=> 2
+- * ```
+- */
+-export default class Document extends Container<Root> {
+-  type: 'document'
+-  parent: undefined
+-
+-  constructor(defaults?: DocumentProps)
+-
+-  /**
+-   * Returns a `Result` instance representing the document’s CSS roots.
+-   *
+-   * ```js
+-   * const root1 = postcss.parse(css1, { from: 'a.css' })
+-   * const root2 = postcss.parse(css2, { from: 'b.css' })
+-   * const document = postcss.document()
+-   * document.append(root1)
+-   * document.append(root2)
+-   * const result = document.toResult({ to: 'all.css', map: true })
+-   * ```
+-   *
+-   * @param opts Options.
+-   * @return Result with current document’s CSS.
+-   */
+-  toResult(options?: ProcessOptions): Result
+-}
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/document.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/document.js
+deleted file mode 100644
+index 4468991..0000000
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/document.js
++++ /dev/null
+@@ -1,33 +0,0 @@
+-'use strict'
+-
+-let Container = require('./container')
+-
+-let LazyResult, Processor
+-
+-class Document extends Container {
+-  constructor(defaults) {
+-    // type needs to be passed to super, otherwise child roots won't be normalized correctly
+-    super({ type: 'document', ...defaults })
+-
+-    if (!this.nodes) {
+-      this.nodes = []
+-    }
+-  }
+-
+-  toResult(opts = {}) {
+-    let lazy = new LazyResult(new Processor(), this, opts)
+-
+-    return lazy.stringify()
+-  }
+-}
+-
+-Document.registerLazyResult = dependant => {
+-  LazyResult = dependant
+-}
+-
+-Document.registerProcessor = dependant => {
+-  Processor = dependant
+-}
+-
+-module.exports = Document
+-Document.default = Document
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/fromJSON.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/fromJSON.js
+index 09f2b89..7264c88 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/fromJSON.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/fromJSON.js
+@@ -8,7 +8,7 @@ let Input = require('./input')
+ let Root = require('./root')
+ let Rule = require('./rule')
+ 
+-function fromJSON(json, inputs) {
++function fromJSON (json, inputs) {
+   if (Array.isArray(json)) return json.map(n => fromJSON(n))
+ 
+   let { inputs: ownInputs, ...defaults } = json
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.d.ts
+index 357910b..f6d603c 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.d.ts
+@@ -13,25 +13,15 @@ export interface FilePosition {
+   file?: string
+ 
+   /**
+-   * Line of inclusive start position in source file.
++   * Line in source file.
+    */
+   line: number
+ 
+   /**
+-   * Column of inclusive start position in source file.
++   * Column in source file.
+    */
+   column: number
+ 
+-  /**
+-   * Line of exclusive end position in source file.
+-   */
+-  endLine?: number
+-
+-  /**
+-   * Column of exclusive end position in source file.
+-   */
+-  endColumn?: number
+-
+   /**
+    * Source code.
+    */
+@@ -99,7 +89,7 @@ export default class Input {
+    * @param css  Input CSS source.
+    * @param opts Process options.
+    */
+-  constructor(css: string, opts?: ProcessOptions)
++  constructor (css: string, opts?: ProcessOptions)
+ 
+   /**
+    * The CSS source identifier. Contains `Input#file` if the user
+@@ -113,38 +103,28 @@ export default class Input {
+    * root.source.input.from //=> "<input css 1>"
+    * ```
+    */
+-  get from(): string
++  get from (): string
+ 
+   /**
+    * Reads the input source map and returns a symbol position
+    * in the input source (e.g., in a Sass file that was compiled
+-   * to CSS before being passed to PostCSS). Optionally takes an
+-   * end position, exclusive.
++   * to CSS before being passed to PostCSS).
+    *
+    * ```js
+    * root.source.input.origin(1, 1) //=> { file: 'a.css', line: 3, column: 1 }
+-   * root.source.input.origin(1, 1, 1, 4)
+-   * //=> { file: 'a.css', line: 3, column: 1, endLine: 3, endColumn: 4 }
+    * ```
+    *
+-   * @param line      Line for inclusive start position in input CSS.
+-   * @param column    Column for inclusive start position in input CSS.
+-   * @param endLine   Line for exclusive end position in input CSS.
+-   * @param endColumn Column for exclusive end position in input CSS.
++   * @param line   Line in input CSS.
++   * @param column Column in input CSS.
+    *
+    * @return Position in input source.
+    */
+-  origin(
+-    line: number,
+-    column: number,
+-    endLine?: number,
+-    endColumn?: number
+-  ): FilePosition | false
++  origin (line: number, column: number): FilePosition | false
+ 
+   /**
+    * Converts source offset to line and column.
+    *
+    * @param offset Source offset.
+    */
+-  fromOffset(offset: number): { line: number; col: number } | null
++  fromOffset (offset: number): { line: number; col: number } | null
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.js
+index 0415b59..ad89d38 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/input.js
+@@ -1,6 +1,5 @@
+ 'use strict'
+ 
+-let { SourceMapConsumer, SourceMapGenerator } = require('source-map-js')
+ let { fileURLToPath, pathToFileURL } = require('url')
+ let { resolve, isAbsolute } = require('path')
+ let { nanoid } = require('nanoid/non-secure')
+@@ -9,13 +8,10 @@ let terminalHighlight = require('./terminal-highlight')
+ let CssSyntaxError = require('./css-syntax-error')
+ let PreviousMap = require('./previous-map')
+ 
+-let fromOffsetCache = Symbol('fromOffsetCache')
+-
+-let sourceMapAvailable = Boolean(SourceMapConsumer && SourceMapGenerator)
+-let pathAvailable = Boolean(resolve && isAbsolute)
++let fromOffsetCache = Symbol('fromOffset cache')
+ 
+ class Input {
+-  constructor(css, opts = {}) {
++  constructor (css, opts = {}) {
+     if (
+       css === null ||
+       typeof css === 'undefined' ||
+@@ -34,24 +30,18 @@ class Input {
+     }
+ 
+     if (opts.from) {
+-      if (
+-        !pathAvailable ||
+-        /^\w+:\/\//.test(opts.from) ||
+-        isAbsolute(opts.from)
+-      ) {
++      if (/^\w+:\/\//.test(opts.from) || isAbsolute(opts.from)) {
+         this.file = opts.from
+       } else {
+         this.file = resolve(opts.from)
+       }
+     }
+ 
+-    if (pathAvailable && sourceMapAvailable) {
+-      let map = new PreviousMap(this.css, opts)
+-      if (map.text) {
+-        this.map = map
+-        let file = map.consumer().file
+-        if (!this.file && file) this.file = this.mapResolve(file)
+-      }
++    let map = new PreviousMap(this.css, opts)
++    if (map.text) {
++      this.map = map
++      let file = map.consumer().file
++      if (!this.file && file) this.file = this.mapResolve(file)
+     }
+ 
+     if (!this.file) {
+@@ -60,7 +50,7 @@ class Input {
+     if (this.map) this.map.file = this.from
+   }
+ 
+-  fromOffset(offset) {
++  fromOffset (offset) {
+     let lastLine, lineToIndex
+     if (!this[fromOffsetCache]) {
+       let lines = this.css.split('\n')
+@@ -102,44 +92,19 @@ class Input {
+     }
+   }
+ 
+-  error(message, line, column, opts = {}) {
+-    let result, endLine, endColumn
+-
+-    if (line && typeof line === 'object') {
+-      let start = line
+-      let end = column
+-      if (typeof line.offset === 'number') {
+-        let pos = this.fromOffset(start.offset)
+-        line = pos.line
+-        column = pos.col
+-      } else {
+-        line = start.line
+-        column = start.column
+-      }
+-      if (typeof end.offset === 'number') {
+-        let pos = this.fromOffset(end.offset)
+-        endLine = pos.line
+-        endColumn = pos.col
+-      } else {
+-        endLine = end.line
+-        endColumn = end.column
+-      }
+-    } else if (!column) {
++  error (message, line, column, opts = {}) {
++    let result
++    if (!column) {
+       let pos = this.fromOffset(line)
+       line = pos.line
+       column = pos.col
+     }
+-
+-    let origin = this.origin(line, column, endLine, endColumn)
++    let origin = this.origin(line, column)
+     if (origin) {
+       result = new CssSyntaxError(
+         message,
+-        origin.endLine === undefined
+-          ? origin.line
+-          : { line: origin.line, column: origin.column },
+-        origin.endLine === undefined
+-          ? origin.column
+-          : { line: origin.endLine, column: origin.endColumn },
++        origin.line,
++        origin.column,
+         origin.source,
+         origin.file,
+         opts.plugin
+@@ -147,37 +112,30 @@ class Input {
+     } else {
+       result = new CssSyntaxError(
+         message,
+-        endLine === undefined ? line : { line, column },
+-        endLine === undefined ? column : { line: endLine, column: endColumn },
++        line,
++        column,
+         this.css,
+         this.file,
+         opts.plugin
+       )
+     }
+ 
+-    result.input = { line, column, endLine, endColumn, source: this.css }
++    result.input = { line, column, source: this.css }
+     if (this.file) {
+-      if (pathToFileURL) {
+-        result.input.url = pathToFileURL(this.file).toString()
+-      }
++      result.input.url = pathToFileURL(this.file).toString()
+       result.input.file = this.file
+     }
+ 
+     return result
+   }
+ 
+-  origin(line, column, endLine, endColumn) {
++  origin (line, column) {
+     if (!this.map) return false
+     let consumer = this.map.consumer()
+ 
+     let from = consumer.originalPositionFor({ line, column })
+     if (!from.source) return false
+ 
+-    let to
+-    if (typeof endLine === 'number') {
+-      to = consumer.originalPositionFor({ line: endLine, column: endColumn })
+-    }
+-
+     let fromUrl
+ 
+     if (isAbsolute(from.source)) {
+@@ -192,18 +150,11 @@ class Input {
+     let result = {
+       url: fromUrl.toString(),
+       line: from.line,
+-      column: from.column,
+-      endLine: to && to.line,
+-      endColumn: to && to.column
++      column: from.column
+     }
+ 
+     if (fromUrl.protocol === 'file:') {
+-      if (fileURLToPath) {
+-        result.file = fileURLToPath(fromUrl)
+-      } else {
+-        /* c8 ignore next 2 */
+-        throw new Error(`file: protocol is not available in this PostCSS build`)
+-      }
++      result.file = fileURLToPath(fromUrl)
+     }
+ 
+     let source = consumer.sourceContentFor(from.source)
+@@ -212,18 +163,18 @@ class Input {
+     return result
+   }
+ 
+-  mapResolve(file) {
++  mapResolve (file) {
+     if (/^\w+:\/\//.test(file)) {
+       return file
+     }
+     return resolve(this.map.consumer().sourceRoot || this.map.root || '.', file)
+   }
+ 
+-  get from() {
++  get from () {
+     return this.file || this.id
+   }
+ 
+-  toJSON() {
++  toJSON () {
+     let json = {}
+     for (let name of ['hasBOM', 'css', 'file', 'id']) {
+       if (this[name] != null) {
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.d.ts
+index a514234..304eef5 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.d.ts
+@@ -64,24 +64,24 @@ export default class LazyResult implements PromiseLike<Result> {
+    * @param css       CSS to parse and transform.
+    * @param opts      Options from the `Processor#process` or `Root#toResult`.
+    */
+-  constructor(processor: Processor, css: string, opts: ResultOptions)
++  constructor (processor: Processor, css: string, opts: ResultOptions)
+ 
+   /**
+    * Returns the default string description of an object.
+    * Required to implement the Promise interface.
+    */
+-  get [Symbol.toStringTag](): string
++  get [Symbol.toStringTag] (): string
+ 
+   /**
+    * Returns a `Processor` instance, which will be used
+    * for CSS transformations.
+    */
+-  get processor(): Processor
++  get processor (): Processor
+ 
+   /**
+    * Options from the `Processor#process` call.
+    */
+-  get opts(): ResultOptions
++  get opts (): ResultOptions
+ 
+   /**
+    * Processes input CSS through synchronous plugins, converts `Root`
+@@ -89,11 +89,10 @@ export default class LazyResult implements PromiseLike<Result> {
+    *
+    * This property will only work with synchronous plugins.
+    * If the processor contains any asynchronous plugins
+-   * it will throw an error.
+-   *
+-   * PostCSS runners should always use `LazyResult#then`.
++   * it will throw an error. This is why this method is only
++   * for debug purpose, you should always use `LazyResult#then`.
+    */
+-  get css(): string
++  get css (): string
+ 
+   /**
+    * An alias for the `css` property. Use it with syntaxes
+@@ -101,11 +100,10 @@ export default class LazyResult implements PromiseLike<Result> {
+    *
+    * This property will only work with synchronous plugins.
+    * If the processor contains any asynchronous plugins
+-   * it will throw an error.
+-   *
+-   * PostCSS runners should always use `LazyResult#then`.
++   * it will throw an error. This is why this method is only
++   * for debug purpose, you should always use `LazyResult#then`.
+    */
+-  get content(): string
++  get content (): string
+ 
+   /**
+    * Processes input CSS through synchronous plugins
+@@ -113,11 +111,10 @@ export default class LazyResult implements PromiseLike<Result> {
+    *
+    * This property will only work with synchronous plugins.
+    * If the processor contains any asynchronous plugins
+-   * it will throw an error.
+-   *
+-   * PostCSS runners should always use `LazyResult#then`.
++   * it will throw an error. This is why this method is only
++   * for debug purpose, you should always use `LazyResult#then`.
+    */
+-  get map(): SourceMap
++  get map (): SourceMap
+ 
+   /**
+    * Processes input CSS through synchronous plugins
+@@ -126,9 +123,10 @@ export default class LazyResult implements PromiseLike<Result> {
+    * This property will only work with synchronous plugins. If the processor
+    * contains any asynchronous plugins it will throw an error.
+    *
+-   * PostCSS runners should always use `LazyResult#then`.
++   * This is why this method is only for debug purpose,
++   * you should always use `LazyResult#then`.
+    */
+-  get root(): Root
++  get root (): Root
+ 
+   /**
+    * Processes input CSS through synchronous plugins
+@@ -137,9 +135,10 @@ export default class LazyResult implements PromiseLike<Result> {
+    * This property will only work with synchronous plugins. If the processor
+    * contains any asynchronous plugins it will throw an error.
+    *
+-   * PostCSS runners should always use `LazyResult#then`.
++   * This is why this method is only for debug purpose,
++   * you should always use `LazyResult#then`.
+    */
+-  get messages(): Message[]
++  get messages (): Message[]
+ 
+   /**
+    * Processes input CSS through synchronous plugins
+@@ -147,7 +146,7 @@ export default class LazyResult implements PromiseLike<Result> {
+    *
+    * @return Warnings from plugins.
+    */
+-  warnings(): Warning[]
++  warnings (): Warning[]
+ 
+   /**
+    * Alias for the `LazyResult#css` property.
+@@ -158,19 +157,19 @@ export default class LazyResult implements PromiseLike<Result> {
+    *
+    * @return Output CSS.
+    */
+-  toString(): string
++  toString (): string
+ 
+   /**
+    * Run plugin in sync way and return `Result`.
+    *
+    * @return Result with output content.
+    */
+-  sync(): Result
++  sync (): Result
+ 
+   /**
+    * Run plugin in async way and return `Result`.
+    *
+    * @return Result with output content.
+    */
+-  async(): Promise<Result>
++  async (): Promise<Result>
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.js
+index 584a95d..7a40669 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/lazy-result.js
+@@ -1,17 +1,14 @@
+ 'use strict'
+ 
+-let { isClean, my } = require('./symbols')
+ let MapGenerator = require('./map-generator')
++let { isClean } = require('./symbols')
+ let stringify = require('./stringify')
+-let Container = require('./container')
+-let Document = require('./document')
+ let warnOnce = require('./warn-once')
+ let Result = require('./result')
+ let parse = require('./parse')
+ let Root = require('./root')
+ 
+ const TYPE_TO_CLASS_NAME = {
+-  document: 'Document',
+   root: 'Root',
+   atrule: 'AtRule',
+   rule: 'Rule',
+@@ -23,7 +20,6 @@ const PLUGIN_PROPS = {
+   postcssPlugin: true,
+   prepare: true,
+   Once: true,
+-  Document: true,
+   Root: true,
+   Declaration: true,
+   Rule: true,
+@@ -34,7 +30,6 @@ const PLUGIN_PROPS = {
+   AtRuleExit: true,
+   CommentExit: true,
+   RootExit: true,
+-  DocumentExit: true,
+   OnceExit: true
+ }
+ 
+@@ -46,11 +41,11 @@ const NOT_VISITORS = {
+ 
+ const CHILDREN = 0
+ 
+-function isPromise(obj) {
++function isPromise (obj) {
+   return typeof obj === 'object' && typeof obj.then === 'function'
+ }
+ 
+-function getEvents(node) {
++function getEvents (node) {
+   let key = false
+   let type = TYPE_TO_CLASS_NAME[node.type]
+   if (node.type === 'decl') {
+@@ -76,11 +71,9 @@ function getEvents(node) {
+   }
+ }
+ 
+-function toStack(node) {
++function toStack (node) {
+   let events
+-  if (node.type === 'document') {
+-    events = ['Document', CHILDREN, 'DocumentExit']
+-  } else if (node.type === 'root') {
++  if (node.type === 'root') {
+     events = ['Root', CHILDREN, 'RootExit']
+   } else {
+     events = getEvents(node)
+@@ -96,7 +89,7 @@ function toStack(node) {
+   }
+ }
+ 
+-function cleanMarks(node) {
++function cleanMarks (node) {
+   node[isClean] = false
+   if (node.nodes) node.nodes.forEach(i => cleanMarks(i))
+   return node
+@@ -105,16 +98,12 @@ function cleanMarks(node) {
+ let postcss = {}
+ 
+ class LazyResult {
+-  constructor(processor, css, opts) {
++  constructor (processor, css, opts) {
+     this.stringified = false
+     this.processed = false
+ 
+     let root
+-    if (
+-      typeof css === 'object' &&
+-      css !== null &&
+-      (css.type === 'root' || css.type === 'document')
+-    ) {
++    if (typeof css === 'object' && css !== null && css.type === 'root') {
+       root = cleanMarks(css)
+     } else if (css instanceof LazyResult || css instanceof Result) {
+       root = cleanMarks(css.root)
+@@ -135,11 +124,6 @@ class LazyResult {
+         this.processed = true
+         this.error = error
+       }
+-
+-      if (root && !root[my]) {
+-        /* c8 ignore next 2 */
+-        Container.rebuild(root)
+-      }
+     }
+ 
+     this.result = new Result(processor, root, opts)
+@@ -153,47 +137,47 @@ class LazyResult {
+     })
+   }
+ 
+-  get [Symbol.toStringTag]() {
++  get [Symbol.toStringTag] () {
+     return 'LazyResult'
+   }
+ 
+-  get processor() {
++  get processor () {
+     return this.result.processor
+   }
+ 
+-  get opts() {
++  get opts () {
+     return this.result.opts
+   }
+ 
+-  get css() {
++  get css () {
+     return this.stringify().css
+   }
+ 
+-  get content() {
++  get content () {
+     return this.stringify().content
+   }
+ 
+-  get map() {
++  get map () {
+     return this.stringify().map
+   }
+ 
+-  get root() {
++  get root () {
+     return this.sync().root
+   }
+ 
+-  get messages() {
++  get messages () {
+     return this.sync().messages
+   }
+ 
+-  warnings() {
++  warnings () {
+     return this.sync().warnings()
+   }
+ 
+-  toString() {
++  toString () {
+     return this.css
+   }
+ 
+-  then(onFulfilled, onRejected) {
++  then (onFulfilled, onRejected) {
+     if (process.env.NODE_ENV !== 'production') {
+       if (!('from' in this.opts)) {
+         warnOnce(
+@@ -206,15 +190,15 @@ class LazyResult {
+     return this.async().then(onFulfilled, onRejected)
+   }
+ 
+-  catch(onRejected) {
++  catch (onRejected) {
+     return this.async().catch(onRejected)
+   }
+ 
+-  finally(onFinally) {
++  finally (onFinally) {
+     return this.async().then(onFinally, onFinally)
+   }
+ 
+-  async() {
++  async () {
+     if (this.error) return Promise.reject(this.error)
+     if (this.processed) return Promise.resolve(this.result)
+     if (!this.processing) {
+@@ -223,7 +207,7 @@ class LazyResult {
+     return this.processing
+   }
+ 
+-  sync() {
++  sync () {
+     if (this.error) throw this.error
+     if (this.processed) return this.result
+     this.processed = true
+@@ -247,20 +231,14 @@ class LazyResult {
+         this.walkSync(root)
+       }
+       if (this.listeners.OnceExit) {
+-        if (root.type === 'document') {
+-          for (let subRoot of root.nodes) {
+-            this.visitSync(this.listeners.OnceExit, subRoot)
+-          }
+-        } else {
+-          this.visitSync(this.listeners.OnceExit, root)
+-        }
++        this.visitSync(this.listeners.OnceExit, root)
+       }
+     }
+ 
+     return this.result
+   }
+ 
+-  stringify() {
++  stringify () {
+     if (this.error) throw this.error
+     if (this.stringified) return this.result
+     this.stringified = true
+@@ -281,7 +259,7 @@ class LazyResult {
+     return this.result
+   }
+ 
+-  walkSync(node) {
++  walkSync (node) {
+     node[isClean] = true
+     let events = getEvents(node)
+     for (let event of events) {
+@@ -300,7 +278,7 @@ class LazyResult {
+     }
+   }
+ 
+-  visitSync(visitors, node) {
++  visitSync (visitors, node) {
+     for (let [plugin, visitor] of visitors) {
+       this.result.lastPlugin = plugin
+       let promise
+@@ -309,31 +287,17 @@ class LazyResult {
+       } catch (e) {
+         throw this.handleError(e, node.proxyOf)
+       }
+-      if (node.type !== 'root' && node.type !== 'document' && !node.parent) {
+-        return true
+-      }
++      if (node.type !== 'root' && !node.parent) return true
+       if (isPromise(promise)) {
+         throw this.getAsyncError()
+       }
+     }
+   }
+ 
+-  runOnRoot(plugin) {
++  runOnRoot (plugin) {
+     this.result.lastPlugin = plugin
+     try {
+       if (typeof plugin === 'object' && plugin.Once) {
+-        if (this.result.root.type === 'document') {
+-          let roots = this.result.root.nodes.map(root =>
+-            plugin.Once(root, this.helpers)
+-          )
+-
+-          if (isPromise(roots[0])) {
+-            return Promise.all(roots)
+-          }
+-
+-          return roots
+-        }
+-
+         return plugin.Once(this.result.root, this.helpers)
+       } else if (typeof plugin === 'function') {
+         return plugin(this.result.root, this.result)
+@@ -343,11 +307,11 @@ class LazyResult {
+     }
+   }
+ 
+-  getAsyncError() {
++  getAsyncError () {
+     throw new Error('Use process(css).then(cb) to work with async plugins')
+   }
+ 
+-  handleError(error, node) {
++  handleError (error, node) {
+     let plugin = this.result.lastPlugin
+     try {
+       if (node) node.addToError(error)
+@@ -364,7 +328,6 @@ class LazyResult {
+           let b = runtimeVer.split('.')
+ 
+           if (a[0] !== b[0] || parseInt(a[1]) > parseInt(b[1])) {
+-            // eslint-disable-next-line no-console
+             console.error(
+               'Unknown error from PostCSS plugin. Your current PostCSS ' +
+                 'version is ' +
+@@ -379,14 +342,13 @@ class LazyResult {
+         }
+       }
+     } catch (err) {
+-      /* c8 ignore next 3 */
+-      // eslint-disable-next-line no-console
++      // istanbul ignore next
+       if (console && console.error) console.error(err)
+     }
+     return error
+   }
+ 
+-  async runAsync() {
++  async runAsync () {
+     this.plugin = 0
+     for (let i = 0; i < this.plugins.length; i++) {
+       let plugin = this.plugins[i]
+@@ -423,15 +385,7 @@ class LazyResult {
+         for (let [plugin, visitor] of this.listeners.OnceExit) {
+           this.result.lastPlugin = plugin
+           try {
+-            if (root.type === 'document') {
+-              let roots = root.nodes.map(subRoot =>
+-                visitor(subRoot, this.helpers)
+-              )
+-
+-              await Promise.all(roots)
+-            } else {
+-              await visitor(root, this.helpers)
+-            }
++            await visitor(root, this.helpers)
+           } catch (e) {
+             throw this.handleError(e)
+           }
+@@ -443,7 +397,7 @@ class LazyResult {
+     return this.stringify()
+   }
+ 
+-  prepareVisitors() {
++  prepareVisitors () {
+     this.listeners = {}
+     let add = (plugin, type, cb) => {
+       if (!this.listeners[type]) this.listeners[type] = []
+@@ -481,11 +435,11 @@ class LazyResult {
+     this.hasListener = Object.keys(this.listeners).length > 0
+   }
+ 
+-  visitTick(stack) {
++  visitTick (stack) {
+     let visit = stack[stack.length - 1]
+     let { node, visitors } = visit
+ 
+-    if (node.type !== 'root' && node.type !== 'document' && !node.parent) {
++    if (node.type !== 'root' && !node.parent) {
+       stack.pop()
+       return
+     }
+@@ -547,4 +501,3 @@ module.exports = LazyResult
+ LazyResult.default = LazyResult
+ 
+ Root.registerLazyResult(LazyResult)
+-Document.registerLazyResult(LazyResult)
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.d.ts
+index 79841ed..c821dca 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.d.ts
+@@ -1,19 +1,4 @@
+ export type List = {
+-  /**
+-   * Safely splits values.
+-   *
+-   * ```js
+-   * Once (root, { list }) {
+-   *   list.split('1px calc(10% + 1px)', [' ', '\n', '\t']) //=> ['1px', 'calc(10% + 1px)']
+-   * }
+-   * ```
+-   *
+-   * @param string separated values.
+-   * @param separators array of separators.
+-   * @param last boolean indicator.
+-   * @return Split values.
+-   */
+-  split(string: string, separators: string[], last: boolean): string[]
+   /**
+    * Safely splits space-separated values (such as those for `background`,
+    * `border-radius`, and other shorthand properties).
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.js
+index 08e9416..3d00152 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/list.js
+@@ -1,7 +1,7 @@
+ 'use strict'
+ 
+ let list = {
+-  split(string, separators, last) {
++  split (string, separators, last) {
+     let array = []
+     let current = ''
+     let split = false
+@@ -42,12 +42,12 @@ let list = {
+     return array
+   },
+ 
+-  space(string) {
++  space (string) {
+     let spaces = [' ', '\n', '\t']
+     return list.split(string, spaces)
+   },
+ 
+-  comma(string) {
++  comma (string) {
+     return list.split(string, [','], true)
+   }
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/map-generator.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/map-generator.js
+index 49d638a..d81bd66 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/map-generator.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/map-generator.js
+@@ -1,52 +1,41 @@
+ 'use strict'
+ 
+-let { SourceMapConsumer, SourceMapGenerator } = require('source-map-js')
+ let { dirname, resolve, relative, sep } = require('path')
+ let { pathToFileURL } = require('url')
+-
+-let Input = require('./input')
+-
+-let sourceMapAvailable = Boolean(SourceMapConsumer && SourceMapGenerator)
+-let pathAvailable = Boolean(dirname && resolve && relative && sep)
++let mozilla = require('source-map')
+ 
+ class MapGenerator {
+-  constructor(stringify, root, opts, cssString) {
++  constructor (stringify, root, opts) {
+     this.stringify = stringify
+     this.mapOpts = opts.map || {}
+     this.root = root
+     this.opts = opts
+-    this.css = cssString
+   }
+ 
+-  isMap() {
++  isMap () {
+     if (typeof this.opts.map !== 'undefined') {
+       return !!this.opts.map
+     }
+     return this.previous().length > 0
+   }
+ 
+-  previous() {
++  previous () {
+     if (!this.previousMaps) {
+       this.previousMaps = []
+-      if (this.root) {
+-        this.root.walk(node => {
+-          if (node.source && node.source.input.map) {
+-            let map = node.source.input.map
+-            if (!this.previousMaps.includes(map)) {
+-              this.previousMaps.push(map)
+-            }
++      this.root.walk(node => {
++        if (node.source && node.source.input.map) {
++          let map = node.source.input.map
++          if (!this.previousMaps.includes(map)) {
++            this.previousMaps.push(map)
+           }
+-        })
+-      } else {
+-        let input = new Input(this.css, this.opts)
+-        if (input.map) this.previousMaps.push(input.map)
+-      }
++        }
++      })
+     }
+ 
+     return this.previousMaps
+   }
+ 
+-  isInline() {
++  isInline () {
+     if (typeof this.mapOpts.inline !== 'undefined') {
+       return this.mapOpts.inline
+     }
+@@ -62,7 +51,7 @@ class MapGenerator {
+     return true
+   }
+ 
+-  isSourcesContent() {
++  isSourcesContent () {
+     if (typeof this.mapOpts.sourcesContent !== 'undefined') {
+       return this.mapOpts.sourcesContent
+     }
+@@ -72,54 +61,43 @@ class MapGenerator {
+     return true
+   }
+ 
+-  clearAnnotation() {
++  clearAnnotation () {
+     if (this.mapOpts.annotation === false) return
+ 
+-    if (this.root) {
+-      let node
+-      for (let i = this.root.nodes.length - 1; i >= 0; i--) {
+-        node = this.root.nodes[i]
+-        if (node.type !== 'comment') continue
+-        if (node.text.indexOf('# sourceMappingURL=') === 0) {
+-          this.root.removeChild(i)
+-        }
++    let node
++    for (let i = this.root.nodes.length - 1; i >= 0; i--) {
++      node = this.root.nodes[i]
++      if (node.type !== 'comment') continue
++      if (node.text.indexOf('# sourceMappingURL=') === 0) {
++        this.root.removeChild(i)
+       }
+-    } else if (this.css) {
+-      this.css = this.css.replace(/(\n)?\/\*#[\S\s]*?\*\/$/gm, '')
+     }
+   }
+ 
+-  setSourcesContent() {
++  setSourcesContent () {
+     let already = {}
+-    if (this.root) {
+-      this.root.walk(node => {
+-        if (node.source) {
+-          let from = node.source.input.from
+-          if (from && !already[from]) {
+-            already[from] = true
+-            this.map.setSourceContent(
+-              this.toUrl(this.path(from)),
+-              node.source.input.css
+-            )
+-          }
++    this.root.walk(node => {
++      if (node.source) {
++        let from = node.source.input.from
++        if (from && !already[from]) {
++          already[from] = true
++          this.map.setSourceContent(
++            this.toUrl(this.path(from)),
++            node.source.input.css
++          )
+         }
+-      })
+-    } else if (this.css) {
+-      let from = this.opts.from
+-        ? this.toUrl(this.path(this.opts.from))
+-        : '<no source>'
+-      this.map.setSourceContent(from, this.css)
+-    }
++      }
++    })
+   }
+ 
+-  applyPrevMaps() {
++  applyPrevMaps () {
+     for (let prev of this.previous()) {
+       let from = this.toUrl(this.path(prev.file))
+       let root = prev.root || dirname(prev.file)
+       let map
+ 
+       if (this.mapOpts.sourcesContent === false) {
+-        map = new SourceMapConsumer(prev.text)
++        map = new mozilla.SourceMapConsumer(prev.text)
+         if (map.sourcesContent) {
+           map.sourcesContent = map.sourcesContent.map(() => null)
+         }
+@@ -131,7 +109,7 @@ class MapGenerator {
+     }
+   }
+ 
+-  isAnnotation() {
++  isAnnotation () {
+     if (this.isInline()) {
+       return true
+     }
+@@ -144,15 +122,16 @@ class MapGenerator {
+     return true
+   }
+ 
+-  toBase64(str) {
++  toBase64 (str) {
+     if (Buffer) {
+       return Buffer.from(str).toString('base64')
+     } else {
++      // istanbul ignore next
+       return window.btoa(unescape(encodeURIComponent(str)))
+     }
+   }
+ 
+-  addAnnotation() {
++  addAnnotation () {
+     let content
+ 
+     if (this.isInline()) {
+@@ -165,52 +144,36 @@ class MapGenerator {
+     } else {
+       content = this.outputFile() + '.map'
+     }
++
+     let eol = '\n'
+     if (this.css.includes('\r\n')) eol = '\r\n'
+ 
+     this.css += eol + '/*# sourceMappingURL=' + content + ' */'
+   }
+ 
+-  outputFile() {
++  outputFile () {
+     if (this.opts.to) {
+       return this.path(this.opts.to)
+-    } else if (this.opts.from) {
++    }
++    if (this.opts.from) {
+       return this.path(this.opts.from)
+-    } else {
+-      return 'to.css'
+     }
++    return 'to.css'
+   }
+ 
+-  generateMap() {
+-    if (this.root) {
+-      this.generateString()
+-    } else if (this.previous().length === 1) {
+-      let prev = this.previous()[0].consumer()
+-      prev.file = this.outputFile()
+-      this.map = SourceMapGenerator.fromSourceMap(prev)
+-    } else {
+-      this.map = new SourceMapGenerator({ file: this.outputFile() })
+-      this.map.addMapping({
+-        source: this.opts.from
+-          ? this.toUrl(this.path(this.opts.from))
+-          : '<no source>',
+-        generated: { line: 1, column: 0 },
+-        original: { line: 1, column: 0 }
+-      })
+-    }
+-
++  generateMap () {
++    this.generateString()
+     if (this.isSourcesContent()) this.setSourcesContent()
+-    if (this.root && this.previous().length > 0) this.applyPrevMaps()
++    if (this.previous().length > 0) this.applyPrevMaps()
+     if (this.isAnnotation()) this.addAnnotation()
+ 
+     if (this.isInline()) {
+       return [this.css]
+-    } else {
+-      return [this.css, this.map]
+     }
++    return [this.css, this.map]
+   }
+ 
+-  path(file) {
++  path (file) {
+     if (file.indexOf('<') === 0) return file
+     if (/^\w+:\/\//.test(file)) return file
+     if (this.mapOpts.absolute) return file
+@@ -225,32 +188,27 @@ class MapGenerator {
+     return file
+   }
+ 
+-  toUrl(path) {
++  toUrl (path) {
+     if (sep === '\\') {
++      // istanbul ignore next
+       path = path.replace(/\\/g, '/')
+     }
+     return encodeURI(path).replace(/[#?]/g, encodeURIComponent)
+   }
+ 
+-  sourcePath(node) {
++  sourcePath (node) {
+     if (this.mapOpts.from) {
+       return this.toUrl(this.mapOpts.from)
+     } else if (this.mapOpts.absolute) {
+-      if (pathToFileURL) {
+-        return pathToFileURL(node.source.input.from).toString()
+-      } else {
+-        throw new Error(
+-          '`map.absolute` option is not available in this PostCSS build'
+-        )
+-      }
++      return pathToFileURL(node.source.input.from).toString()
+     } else {
+       return this.toUrl(this.path(node.source.input.from))
+     }
+   }
+ 
+-  generateString() {
++  generateString () {
+     this.css = ''
+-    this.map = new SourceMapGenerator({ file: this.outputFile() })
++    this.map = new mozilla.SourceMapGenerator({ file: this.outputFile() })
+ 
+     let line = 1
+     let column = 1
+@@ -314,17 +272,18 @@ class MapGenerator {
+     })
+   }
+ 
+-  generate() {
++  generate () {
+     this.clearAnnotation()
+-    if (pathAvailable && sourceMapAvailable && this.isMap()) {
++
++    if (this.isMap()) {
+       return this.generateMap()
+-    } else {
+-      let result = ''
+-      this.stringify(this.root, i => {
+-        result += i
+-      })
+-      return [result]
+     }
++
++    let result = ''
++    this.stringify(this.root, i => {
++      result += i
++    })
++    return [result]
+   }
+ }
+ 
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/no-work-result.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/no-work-result.d.ts
+deleted file mode 100644
+index 7ba1462..0000000
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/no-work-result.d.ts
++++ /dev/null
+@@ -1,37 +0,0 @@
+-import Result, { Message, ResultOptions } from './result.js'
+-import { SourceMap } from './postcss.js'
+-import Processor from './processor.js'
+-import Warning from './warning.js'
+-import Root from './root.js'
+-import LazyResult from './lazy-result.js'
+-
+-/**
+- * A Promise proxy for the result of PostCSS transformations.
+- * This lazy result instance doesn't parse css unless `NoWorkResult#root` or `Result#root`
+- * are accessed. See the example below for details.
+- * A `NoWork` instance is returned by `Processor#process` ONLY when no plugins defined.
+- *
+- * ```js
+- * const noWorkResult = postcss().process(css) // No plugins are defined.
+- *                                             // CSS is not parsed
+- * let root = noWorkResult.root // now css is parsed because we accessed the root
+- * ```
+- */
+-export default class NoWorkResult implements LazyResult {
+-  then: Promise<Result>['then']
+-  catch: Promise<Result>['catch']
+-  finally: Promise<Result>['finally']
+-  constructor(processor: Processor, css: string, opts: ResultOptions)
+-  get [Symbol.toStringTag](): string
+-  get processor(): Processor
+-  get opts(): ResultOptions
+-  get css(): string
+-  get content(): string
+-  get map(): SourceMap
+-  get root(): Root
+-  get messages(): Message[]
+-  warnings(): Warning[]
+-  toString(): string
+-  sync(): Result
+-  async(): Promise<Result>
+-}
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/no-work-result.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/no-work-result.js
+deleted file mode 100644
+index 3dacb3a..0000000
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/no-work-result.js
++++ /dev/null
+@@ -1,132 +0,0 @@
+-'use strict'
+-
+-let MapGenerator = require('./map-generator')
+-let stringify = require('./stringify')
+-let warnOnce = require('./warn-once')
+-let parse = require('./parse')
+-const Result = require('./result')
+-
+-class NoWorkResult {
+-  constructor(processor, css, opts) {
+-    css = css.toString()
+-    this.stringified = false
+-
+-    this._processor = processor
+-    this._css = css
+-    this._opts = opts
+-    this._map = undefined
+-    let root
+-
+-    let str = stringify
+-    this.result = new Result(this._processor, root, this._opts)
+-    this.result.css = css
+-
+-    let self = this
+-    Object.defineProperty(this.result, 'root', {
+-      get() {
+-        return self.root
+-      }
+-    })
+-
+-    let map = new MapGenerator(str, root, this._opts, css)
+-    if (map.isMap()) {
+-      let [generatedCSS, generatedMap] = map.generate()
+-      if (generatedCSS) {
+-        this.result.css = generatedCSS
+-      }
+-      if (generatedMap) {
+-        this.result.map = generatedMap
+-      }
+-    }
+-  }
+-
+-  get [Symbol.toStringTag]() {
+-    return 'NoWorkResult'
+-  }
+-
+-  get processor() {
+-    return this.result.processor
+-  }
+-
+-  get opts() {
+-    return this.result.opts
+-  }
+-
+-  get css() {
+-    return this.result.css
+-  }
+-
+-  get content() {
+-    return this.result.css
+-  }
+-
+-  get map() {
+-    return this.result.map
+-  }
+-
+-  get root() {
+-    if (this._root) {
+-      return this._root
+-    }
+-
+-    let root
+-    let parser = parse
+-
+-    try {
+-      root = parser(this._css, this._opts)
+-    } catch (error) {
+-      this.error = error
+-    }
+-
+-    this._root = root
+-
+-    return root
+-  }
+-
+-  get messages() {
+-    return []
+-  }
+-
+-  warnings() {
+-    return []
+-  }
+-
+-  toString() {
+-    return this._css
+-  }
+-
+-  then(onFulfilled, onRejected) {
+-    if (process.env.NODE_ENV !== 'production') {
+-      if (!('from' in this._opts)) {
+-        warnOnce(
+-          'Without `from` option PostCSS could generate wrong source map ' +
+-            'and will not find Browserslist config. Set it to CSS file path ' +
+-            'or to `undefined` to prevent this warning.'
+-        )
+-      }
+-    }
+-
+-    return this.async().then(onFulfilled, onRejected)
+-  }
+-
+-  catch(onRejected) {
+-    return this.async().catch(onRejected)
+-  }
+-
+-  finally(onFinally) {
+-    return this.async().then(onFinally, onFinally)
+-  }
+-
+-  async() {
+-    if (this.error) return Promise.reject(this.error)
+-    return Promise.resolve(this.result)
+-  }
+-
+-  sync() {
+-    if (this.error) throw this.error
+-    return this.result
+-  }
+-}
+-
+-module.exports = NoWorkResult
+-NoWorkResult.default = NoWorkResult
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.d.ts
+index ded2dc0..670aced 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.d.ts
+@@ -5,15 +5,14 @@ import AtRule, { AtRuleProps } from './at-rule.js'
+ import Rule, { RuleProps } from './rule.js'
+ import { WarningOptions } from './warning.js'
+ import CssSyntaxError from './css-syntax-error.js'
++import Container from './container.js'
+ import Result from './result.js'
+ import Input from './input.js'
+ import Root from './root.js'
+-import Document from './document.js'
+-import Container from './container.js'
+ 
+ export type ChildNode = AtRule | Rule | Declaration | Comment
+ 
+-export type AnyNode = AtRule | Rule | Declaration | Comment | Root | Document
++export type AnyNode = AtRule | Rule | Declaration | Comment | Root
+ 
+ export type ChildProps =
+   | AtRuleProps
+@@ -38,29 +37,17 @@ export interface Position {
+   line: number
+ }
+ 
+-export interface Range {
+-  /**
+-   * Start position, inclusive.
+-   */
+-  start: Position
+-
+-  /**
+-   * End position, exclusive.
+-   */
+-  end: Position
+-}
+-
+ export interface Source {
+   /**
+    * The file source of the node.
+    */
+   input: Input
+   /**
+-   * The inclusive starting position of the node’s source.
++   * The starting position of the node’s source.
+    */
+   start?: Position
+   /**
+-   * The inclusive ending position of the node's source.
++   * The ending position of the node's source.
+    */
+   end?: Position
+ }
+@@ -84,11 +71,6 @@ interface NodeErrorOptions {
+    * of error.
+    */
+   index?: number
+-  /**
+-   * An ending index inside a node's string that should be highlighted as
+-   * source of error.
+-   */
+-  endIndex?: number
+ }
+ 
+ /**
+@@ -115,7 +97,7 @@ export default abstract class Node {
+    * root.nodes[0].parent === root
+    * ```
+    */
+-  parent: Document | Container | undefined
++  parent: Container | undefined
+ 
+   /**
+    * The input source of the node.
+@@ -193,7 +175,7 @@ export default abstract class Node {
+   /**
+    * @param defaults Value for node properties.
+    */
+-  constructor(defaults?: object)
++  constructor (defaults?: object)
+ 
+   /**
+    * Returns a `CssSyntaxError` instance containing the original position
+@@ -222,7 +204,7 @@ export default abstract class Node {
+    *
+    * @return Error object to throw it.
+    */
+-  error(message: string, options?: NodeErrorOptions): CssSyntaxError
++  error (message: string, options?: NodeErrorOptions): CssSyntaxError
+ 
+   /**
+    * This method is provided as a convenience wrapper for `Result#warn`.
+@@ -241,7 +223,7 @@ export default abstract class Node {
+    *
+    * @return Created warning object.
+    */
+-  warn(result: Result, text: string, opts?: WarningOptions): void
++  warn (result: Result, text: string, opts?: WarningOptions): void
+ 
+   /**
+    * Removes the node from its parent and cleans the parent properties
+@@ -255,7 +237,7 @@ export default abstract class Node {
+    *
+    * @return Node to make calls chain.
+    */
+-  remove(): this
++  remove (): this
+ 
+   /**
+    * Returns a CSS string representing the node.
+@@ -267,19 +249,7 @@ export default abstract class Node {
+    * @param stringifier A syntax to use in string generation.
+    * @return CSS string of this node.
+    */
+-  toString(stringifier?: Stringifier | Syntax): string
+-
+-  /**
+-   * Assigns properties to the current node.
+-   *
+-   * ```js
+-   * decl.assign({ prop: 'word-wrap', value: 'break-word' })
+-   * ```
+-   *
+-   * @param overrides New properties to override the node.
+-   * @return Current node to methods chain.
+-   */
+-  assign(overrides: object): this
++  toString (stringifier?: Stringifier | Syntax): string
+ 
+   /**
+    * Returns an exact clone of the node.
+@@ -297,7 +267,7 @@ export default abstract class Node {
+    * @param overrides New properties to override in the clone.
+    * @return Clone of the node.
+    */
+-  clone(overrides?: object): this
++  clone (overrides?: object): this
+ 
+   /**
+    * Shortcut to clone the node and insert the resulting cloned node
+@@ -311,7 +281,7 @@ export default abstract class Node {
+    *
+    * @return New node
+    */
+-  cloneBefore(overrides?: object): this
++  cloneBefore (overrides?: object): this
+ 
+   /**
+    * Shortcut to clone the node and insert the resulting cloned node
+@@ -320,7 +290,7 @@ export default abstract class Node {
+    * @param overrides New properties to override in the clone.
+    * @return New node.
+    */
+-  cloneAfter(overrides?: object): this
++  cloneAfter (overrides?: object): this
+ 
+   /**
+    * Inserts node(s) before the current node and removes the current node.
+@@ -336,7 +306,7 @@ export default abstract class Node {
+    * @param nodes Mode(s) to replace current one.
+    * @return Current node to methods chain.
+    */
+-  replaceWith(
++  replaceWith (
+     ...nodes: (ChildNode | ChildProps | ChildNode[] | ChildProps[])[]
+   ): this
+ 
+@@ -355,7 +325,7 @@ export default abstract class Node {
+    *
+    * @return Next node.
+    */
+-  next(): ChildNode | undefined
++  next (): ChildNode | undefined
+ 
+   /**
+    * Returns the previous child of the node’s parent.
+@@ -370,7 +340,7 @@ export default abstract class Node {
+    *
+    * @return Previous node.
+    */
+-  prev(): ChildNode | undefined
++  prev (): ChildNode | undefined
+ 
+   /**
+    * Insert new node before current node to current node’s parent.
+@@ -384,7 +354,7 @@ export default abstract class Node {
+    * @param newNode New node.
+    * @return This node for methods chain.
+    */
+-  before(newNode: Node | ChildProps | string | Node[]): this
++  before (newNode: Node | ChildProps | string | Node[]): this
+ 
+   /**
+    * Insert new node after current node to current node’s parent.
+@@ -398,7 +368,7 @@ export default abstract class Node {
+    * @param newNode New node.
+    * @return This node for methods chain.
+    */
+-  after(newNode: Node | ChildProps | string | Node[]): this
++  after (newNode: Node | ChildProps | string | Node[]): this
+ 
+   /**
+    * Finds the Root instance of the node’s tree.
+@@ -409,7 +379,7 @@ export default abstract class Node {
+    *
+    * @return Root parent.
+    */
+-  root(): Root
++  root (): Root
+ 
+   /**
+    * Returns a `Node#raws` value. If the node is missing
+@@ -429,7 +399,7 @@ export default abstract class Node {
+    *                    if the value is the same as prop.
+    * @return {string} Code style value.
+    */
+-  raw(prop: string, defaultType?: string): string
++  raw (prop: string, defaultType?: string): string
+ 
+   /**
+    * Clear the code style properties for the node and its children.
+@@ -442,14 +412,14 @@ export default abstract class Node {
+    *
+    * @param keepBetween Keep the `raws.between` symbols.
+    */
+-  cleanRaws(keepBetween?: boolean): void
++  cleanRaws (keepBetween?: boolean): void
+ 
+   /**
+    * Fix circular links on `JSON.stringify()`.
+    *
+    * @return Cleaned object.
+    */
+-  toJSON(): object
++  toJSON (): object
+ 
+   /**
+    * Convert string index to line/column.
+@@ -457,22 +427,5 @@ export default abstract class Node {
+    * @param index The symbol number in the node’s string.
+    * @return Symbol position in file.
+    */
+-  positionInside(index: number): Position
+-
+-  /**
+-   * Get the position for a word or an index inside the node.
+-   *
+-   * @param opts Options.
+-   * @return Position.
+-   */
+-  positionBy(opts?: Pick<WarningOptions, 'word' | 'index'>): Position
+-
+-  /**
+-   * Get the range for a word or start and end index inside the node.
+-   * The start index is inclusive; the end index is exclusive.
+-   *
+-   * @param opts Options.
+-   * @return Range.
+-   */
+-  rangeBy(opts?: Pick<WarningOptions, 'word' | 'index' | 'endIndex'>): Range
++  positionInside (index: number): Position
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.js
+index bdcbac0..03d8d5b 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/node.js
+@@ -1,16 +1,16 @@
+ 'use strict'
+ 
+-let { isClean, my } = require('./symbols')
+ let CssSyntaxError = require('./css-syntax-error')
+ let Stringifier = require('./stringifier')
++let { isClean } = require('./symbols')
+ let stringify = require('./stringify')
+ 
+-function cloneNode(obj, parent) {
++function cloneNode (obj, parent) {
+   let cloned = new obj.constructor()
+ 
+   for (let i in obj) {
+     if (!Object.prototype.hasOwnProperty.call(obj, i)) {
+-      /* c8 ignore next 2 */
++      // istanbul ignore next
+       continue
+     }
+     if (i === 'proxyCache') continue
+@@ -33,10 +33,9 @@ function cloneNode(obj, parent) {
+ }
+ 
+ class Node {
+-  constructor(defaults = {}) {
++  constructor (defaults = {}) {
+     this.raws = {}
+     this[isClean] = false
+-    this[my] = true
+ 
+     for (let name in defaults) {
+       if (name === 'nodes') {
+@@ -54,26 +53,21 @@ class Node {
+     }
+   }
+ 
+-  error(message, opts = {}) {
++  error (message, opts = {}) {
+     if (this.source) {
+-      let { start, end } = this.rangeBy(opts)
+-      return this.source.input.error(
+-        message,
+-        { line: start.line, column: start.column },
+-        { line: end.line, column: end.column },
+-        opts
+-      )
++      let pos = this.positionBy(opts)
++      return this.source.input.error(message, pos.line, pos.column, opts)
+     }
+     return new CssSyntaxError(message)
+   }
+ 
+-  warn(result, text, opts) {
++  warn (result, text, opts) {
+     let data = { node: this }
+     for (let i in opts) data[i] = opts[i]
+     return result.warn(text, data)
+   }
+ 
+-  remove() {
++  remove () {
+     if (this.parent) {
+       this.parent.removeChild(this)
+     }
+@@ -81,7 +75,7 @@ class Node {
+     return this
+   }
+ 
+-  toString(stringifier = stringify) {
++  toString (stringifier = stringify) {
+     if (stringifier.stringify) stringifier = stringifier.stringify
+     let result = ''
+     stringifier(this, i => {
+@@ -90,14 +84,7 @@ class Node {
+     return result
+   }
+ 
+-  assign(overrides = {}) {
+-    for (let name in overrides) {
+-      this[name] = overrides[name]
+-    }
+-    return this
+-  }
+-
+-  clone(overrides = {}) {
++  clone (overrides = {}) {
+     let cloned = cloneNode(this)
+     for (let name in overrides) {
+       cloned[name] = overrides[name]
+@@ -105,19 +92,19 @@ class Node {
+     return cloned
+   }
+ 
+-  cloneBefore(overrides = {}) {
++  cloneBefore (overrides = {}) {
+     let cloned = this.clone(overrides)
+     this.parent.insertBefore(this, cloned)
+     return cloned
+   }
+ 
+-  cloneAfter(overrides = {}) {
++  cloneAfter (overrides = {}) {
+     let cloned = this.clone(overrides)
+     this.parent.insertAfter(this, cloned)
+     return cloned
+   }
+ 
+-  replaceWith(...nodes) {
++  replaceWith (...nodes) {
+     if (this.parent) {
+       let bookmark = this
+       let foundSelf = false
+@@ -140,48 +127,46 @@ class Node {
+     return this
+   }
+ 
+-  next() {
++  next () {
+     if (!this.parent) return undefined
+     let index = this.parent.index(this)
+     return this.parent.nodes[index + 1]
+   }
+ 
+-  prev() {
++  prev () {
+     if (!this.parent) return undefined
+     let index = this.parent.index(this)
+     return this.parent.nodes[index - 1]
+   }
+ 
+-  before(add) {
++  before (add) {
+     this.parent.insertBefore(this, add)
+     return this
+   }
+ 
+-  after(add) {
++  after (add) {
+     this.parent.insertAfter(this, add)
+     return this
+   }
+ 
+-  root() {
++  root () {
+     let result = this
+-    while (result.parent && result.parent.type !== 'document') {
+-      result = result.parent
+-    }
++    while (result.parent) result = result.parent
+     return result
+   }
+ 
+-  raw(prop, defaultType) {
++  raw (prop, defaultType) {
+     let str = new Stringifier()
+     return str.raw(this, prop, defaultType)
+   }
+ 
+-  cleanRaws(keepBetween) {
++  cleanRaws (keepBetween) {
+     delete this.raws.before
+     delete this.raws.after
+     if (!keepBetween) delete this.raws.between
+   }
+ 
+-  toJSON(_, inputs) {
++  toJSON (_, inputs) {
+     let fixed = {}
+     let emitInputs = inputs == null
+     inputs = inputs || new Map()
+@@ -189,7 +174,7 @@ class Node {
+ 
+     for (let name in this) {
+       if (!Object.prototype.hasOwnProperty.call(this, name)) {
+-        /* c8 ignore next 2 */
++        // istanbul ignore next
+         continue
+       }
+       if (name === 'parent' || name === 'proxyCache') continue
+@@ -229,7 +214,7 @@ class Node {
+     return fixed
+   }
+ 
+-  positionInside(index) {
++  positionInside (index) {
+     let string = this.toString()
+     let column = this.source.start.column
+     let line = this.source.start.line
+@@ -246,7 +231,7 @@ class Node {
+     return { line, column }
+   }
+ 
+-  positionBy(opts) {
++  positionBy (opts) {
+     let pos = this.source.start
+     if (opts.index) {
+       pos = this.positionInside(opts.index)
+@@ -257,62 +242,9 @@ class Node {
+     return pos
+   }
+ 
+-  rangeBy(opts) {
+-    let start = {
+-      line: this.source.start.line,
+-      column: this.source.start.column
+-    }
+-    let end = this.source.end
+-      ? {
+-          line: this.source.end.line,
+-          column: this.source.end.column + 1
+-        }
+-      : {
+-          line: start.line,
+-          column: start.column + 1
+-        }
+-
+-    if (opts.word) {
+-      let index = this.toString().indexOf(opts.word)
+-      if (index !== -1) {
+-        start = this.positionInside(index)
+-        end = this.positionInside(index + opts.word.length)
+-      }
+-    } else {
+-      if (opts.start) {
+-        start = {
+-          line: opts.start.line,
+-          column: opts.start.column
+-        }
+-      } else if (opts.index) {
+-        start = this.positionInside(opts.index)
+-      }
+-
+-      if (opts.end) {
+-        end = {
+-          line: opts.end.line,
+-          column: opts.end.column
+-        }
+-      } else if (opts.endIndex) {
+-        end = this.positionInside(opts.endIndex)
+-      } else if (opts.index) {
+-        end = this.positionInside(opts.index + 1)
+-      }
+-    }
+-
+-    if (
+-      end.line < start.line ||
+-      (end.line === start.line && end.column <= start.column)
+-    ) {
+-      end = { line: start.line, column: start.column + 1 }
+-    }
+-
+-    return { start, end }
+-  }
+-
+-  getProxyProcessor() {
++  getProxyProcessor () {
+     return {
+-      set(node, prop, value) {
++      set (node, prop, value) {
+         if (node[prop] === value) return true
+         node[prop] = value
+         if (
+@@ -321,7 +253,6 @@ class Node {
+           prop === 'name' ||
+           prop === 'params' ||
+           prop === 'important' ||
+-          /* c8 ignore next */
+           prop === 'text'
+         ) {
+           node.markDirty()
+@@ -329,7 +260,7 @@ class Node {
+         return true
+       },
+ 
+-      get(node, prop) {
++      get (node, prop) {
+         if (prop === 'proxyOf') {
+           return node
+         } else if (prop === 'root') {
+@@ -341,14 +272,14 @@ class Node {
+     }
+   }
+ 
+-  toProxy() {
++  toProxy () {
+     if (!this.proxyCache) {
+       this.proxyCache = new Proxy(this, this.getProxyProcessor())
+     }
+     return this.proxyCache
+   }
+ 
+-  addToError(error) {
++  addToError (error) {
+     error.postcssNode = this
+     if (error.stack && this.source && /\n\s{4}at /.test(error.stack)) {
+       let s = this.source
+@@ -360,7 +291,7 @@ class Node {
+     return error
+   }
+ 
+-  markDirty() {
++  markDirty () {
+     if (this[isClean]) {
+       this[isClean] = false
+       let next = this
+@@ -370,7 +301,7 @@ class Node {
+     }
+   }
+ 
+-  get proxyOf() {
++  get proxyOf () {
+     return this
+   }
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/parse.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/parse.js
+index 971431f..108d37f 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/parse.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/parse.js
+@@ -4,7 +4,7 @@ let Container = require('./container')
+ let Parser = require('./parser')
+ let Input = require('./input')
+ 
+-function parse(css, opts) {
++function parse (css, opts) {
+   let input = new Input(css, opts)
+   let parser = new Parser(input)
+   try {
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/parser.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/parser.js
+index eb8fc41..0fcfd50 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/parser.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/parser.js
+@@ -8,7 +8,7 @@ let Root = require('./root')
+ let Rule = require('./rule')
+ 
+ class Parser {
+-  constructor(input) {
++  constructor (input) {
+     this.input = input
+ 
+     this.root = new Root()
+@@ -21,11 +21,11 @@ class Parser {
+     this.root.source = { input, start: { offset: 0, line: 1, column: 1 } }
+   }
+ 
+-  createTokenizer() {
++  createTokenizer () {
+     this.tokenizer = tokenizer(this.input)
+   }
+ 
+-  parse() {
++  parse () {
+     let token
+     while (!this.tokenizer.endOfFile()) {
+       token = this.tokenizer.nextToken()
+@@ -63,7 +63,7 @@ class Parser {
+     this.endFile()
+   }
+ 
+-  comment(token) {
++  comment (token) {
+     let node = new Comment()
+     this.init(node, token[2])
+     node.source.end = this.getPosition(token[3] || token[2])
+@@ -81,7 +81,7 @@ class Parser {
+     }
+   }
+ 
+-  emptyRule(token) {
++  emptyRule (token) {
+     let node = new Rule()
+     this.init(node, token[2])
+     node.selector = ''
+@@ -89,7 +89,7 @@ class Parser {
+     this.current = node
+   }
+ 
+-  other(start) {
++  other (start) {
+     let end = false
+     let type = null
+     let colon = false
+@@ -150,7 +150,7 @@ class Parser {
+     }
+   }
+ 
+-  rule(tokens) {
++  rule (tokens) {
+     tokens.pop()
+ 
+     let node = new Rule()
+@@ -161,7 +161,7 @@ class Parser {
+     this.current = node
+   }
+ 
+-  decl(tokens, customProperty) {
++  decl (tokens, customProperty) {
+     let node = new Declaration()
+     this.init(node, tokens[0][2])
+ 
+@@ -254,7 +254,7 @@ class Parser {
+     }
+   }
+ 
+-  atrule(token) {
++  atrule (token) {
+     let node = new AtRule()
+     node.name = token[1].slice(1)
+     if (node.name === '') {
+@@ -337,7 +337,7 @@ class Parser {
+     }
+   }
+ 
+-  end(token) {
++  end (token) {
+     if (this.current.nodes && this.current.nodes.length) {
+       this.current.raws.semicolon = this.semicolon
+     }
+@@ -354,7 +354,7 @@ class Parser {
+     }
+   }
+ 
+-  endFile() {
++  endFile () {
+     if (this.current.parent) this.unclosedBlock()
+     if (this.current.nodes && this.current.nodes.length) {
+       this.current.raws.semicolon = this.semicolon
+@@ -362,7 +362,7 @@ class Parser {
+     this.current.raws.after = (this.current.raws.after || '') + this.spaces
+   }
+ 
+-  freeSemicolon(token) {
++  freeSemicolon (token) {
+     this.spaces += token[1]
+     if (this.current.nodes) {
+       let prev = this.current.nodes[this.current.nodes.length - 1]
+@@ -375,7 +375,7 @@ class Parser {
+ 
+   // Helpers
+ 
+-  getPosition(offset) {
++  getPosition (offset) {
+     let pos = this.input.fromOffset(offset)
+     return {
+       offset,
+@@ -384,7 +384,7 @@ class Parser {
+     }
+   }
+ 
+-  init(node, offset) {
++  init (node, offset) {
+     this.current.push(node)
+     node.source = {
+       start: this.getPosition(offset),
+@@ -395,7 +395,7 @@ class Parser {
+     if (node.type !== 'comment') this.semicolon = false
+   }
+ 
+-  raw(node, prop, tokens) {
++  raw (node, prop, tokens) {
+     let token, type
+     let length = tokens.length
+     let value = ''
+@@ -438,7 +438,7 @@ class Parser {
+     node[prop] = value
+   }
+ 
+-  spacesAndCommentsFromEnd(tokens) {
++  spacesAndCommentsFromEnd (tokens) {
+     let lastTokenType
+     let spaces = ''
+     while (tokens.length) {
+@@ -449,7 +449,7 @@ class Parser {
+     return spaces
+   }
+ 
+-  spacesAndCommentsFromStart(tokens) {
++  spacesAndCommentsFromStart (tokens) {
+     let next
+     let spaces = ''
+     while (tokens.length) {
+@@ -460,7 +460,7 @@ class Parser {
+     return spaces
+   }
+ 
+-  spacesFromEnd(tokens) {
++  spacesFromEnd (tokens) {
+     let lastTokenType
+     let spaces = ''
+     while (tokens.length) {
+@@ -471,7 +471,7 @@ class Parser {
+     return spaces
+   }
+ 
+-  stringFrom(tokens, from) {
++  stringFrom (tokens, from) {
+     let result = ''
+     for (let i = from; i < tokens.length; i++) {
+       result += tokens[i][1]
+@@ -480,7 +480,7 @@ class Parser {
+     return result
+   }
+ 
+-  colon(tokens) {
++  colon (tokens) {
+     let brackets = 0
+     let token, type, prev
+     for (let [i, element] of tokens.entries()) {
+@@ -510,56 +510,36 @@ class Parser {
+ 
+   // Errors
+ 
+-  unclosedBracket(bracket) {
+-    throw this.input.error(
+-      'Unclosed bracket',
+-      { offset: bracket[2] },
+-      { offset: bracket[2] + 1 }
+-    )
++  unclosedBracket (bracket) {
++    throw this.input.error('Unclosed bracket', bracket[2])
+   }
+ 
+-  unknownWord(tokens) {
+-    throw this.input.error(
+-      'Unknown word',
+-      { offset: tokens[0][2] },
+-      { offset: tokens[0][2] + tokens[0][1].length }
+-    )
++  unknownWord (tokens) {
++    throw this.input.error('Unknown word', tokens[0][2])
+   }
+ 
+-  unexpectedClose(token) {
+-    throw this.input.error(
+-      'Unexpected }',
+-      { offset: token[2] },
+-      { offset: token[2] + 1 }
+-    )
++  unexpectedClose (token) {
++    throw this.input.error('Unexpected }', token[2])
+   }
+ 
+-  unclosedBlock() {
++  unclosedBlock () {
+     let pos = this.current.source.start
+     throw this.input.error('Unclosed block', pos.line, pos.column)
+   }
+ 
+-  doubleColon(token) {
+-    throw this.input.error(
+-      'Double colon',
+-      { offset: token[2] },
+-      { offset: token[2] + token[1].length }
+-    )
++  doubleColon (token) {
++    throw this.input.error('Double colon', token[2])
+   }
+ 
+-  unnamedAtrule(node, token) {
+-    throw this.input.error(
+-      'At-rule without name',
+-      { offset: token[2] },
+-      { offset: token[2] + token[1].length }
+-    )
++  unnamedAtrule (node, token) {
++    throw this.input.error('At-rule without name', token[2])
+   }
+ 
+-  precheckMissedSemicolon(/* tokens */) {
++  precheckMissedSemicolon (/* tokens */) {
+     // Hook for Safe Parser
+   }
+ 
+-  checkMissedSemicolon(tokens) {
++  checkMissedSemicolon (tokens) {
+     let colon = this.colon(tokens)
+     if (colon === false) return
+ 
+@@ -572,13 +552,7 @@ class Parser {
+         if (founded === 2) break
+       }
+     }
+-    // If the token is a word, e.g. `!important`, `red` or any other valid property's value.
+-    // Then we need to return the colon after that word token. [3] is the "end" colon of that word.
+-    // And because we need it after that one we do +1 to get the next one.
+-    throw this.input.error(
+-      'Missed semicolon',
+-      token[0] === 'word' ? token[3] + 1 : token[2]
+-    )
++    throw this.input.error('Missed semicolon', token[2])
+   }
+ }
+ 
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.d.ts
+index 30a0d08..08921c0 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.d.ts
+@@ -1,62 +1,56 @@
+-import { SourceMapGenerator, RawSourceMap } from 'source-map-js'
++import { SourceMapGenerator, RawSourceMap } from 'source-map'
+ 
+ import Node, {
+   Position,
+   Source,
+   ChildNode,
+-  NodeErrorOptions,
+   NodeProps,
+   ChildProps,
+   AnyNode
+ } from './node.js'
+ import Declaration, { DeclarationProps } from './declaration.js'
+-import Container, { ContainerProps } from './container.js'
+-import Document, { DocumentProps } from './document.js'
+-import Warning, { WarningOptions } from './warning.js'
++import Root, { RootProps } from './root.js'
+ import Comment, { CommentProps } from './comment.js'
+ import AtRule, { AtRuleProps } from './at-rule.js'
+-import Input, { FilePosition } from './input.js'
+ import Result, { Message } from './result.js'
+-import Root, { RootProps } from './root.js'
++import LazyResult from './lazy-result.js'
+ import Rule, { RuleProps } from './rule.js'
++import Container, { ContainerProps } from './container.js'
++import Warning, { WarningOptions } from './warning.js'
++import Input, { FilePosition } from './input.js'
+ import CssSyntaxError from './css-syntax-error.js'
+ import list, { List } from './list.js'
+-import LazyResult from './lazy-result.js'
+ import Processor from './processor.js'
+ 
+ export {
+-  NodeErrorOptions,
+-  DeclarationProps,
+-  CssSyntaxError,
+-  ContainerProps,
+   WarningOptions,
+-  DocumentProps,
+   FilePosition,
+-  CommentProps,
+-  AtRuleProps,
+-  Declaration,
+-  ChildProps,
+-  LazyResult,
++  Position,
++  Source,
+   ChildNode,
++  AnyNode,
++  Message,
+   NodeProps,
+-  Processor,
++  DeclarationProps,
++  ContainerProps,
++  CommentProps,
+   RuleProps,
++  ChildProps,
++  AtRuleProps,
+   RootProps,
+-  Container,
+-  Position,
+-  Document,
+-  AnyNode,
+   Warning,
+-  Message,
+-  Comment,
+-  Source,
+-  AtRule,
+-  Result,
+-  Input,
++  CssSyntaxError,
+   Node,
++  Container,
+   list,
++  Declaration,
++  Comment,
++  AtRule,
+   Rule,
+-  Root
++  Root,
++  Result,
++  LazyResult,
++  Input
+ }
+ 
+ export type SourceMap = SourceMapGenerator & {
+@@ -65,10 +59,6 @@ export type SourceMap = SourceMapGenerator & {
+ 
+ export type Helpers = { result: Result; postcss: Postcss } & Postcss
+ 
+-type DocumentProcessor = (
+-  document: Document,
+-  helper: Helpers
+-) => Promise<void> | void
+ type RootProcessor = (root: Root, helper: Helpers) => Promise<void> | void
+ type DeclarationProcessor = (
+   decl: Declaration,
+@@ -82,20 +72,6 @@ type CommentProcessor = (
+ ) => Promise<void> | void
+ 
+ interface Processors {
+-  /**
+-   * Will be called on `Document` node.
+-   *
+-   * Will be called again on children changes.
+-   */
+-  Document?: DocumentProcessor
+-
+-  /**
+-   * Will be called on `Document` node, when all children will be processed.
+-   *
+-   * Will be called again on children changes.
+-   */
+-  DocumentExit?: DocumentProcessor
+-
+   /**
+    * Will be called on `Root` node once.
+    */
+@@ -222,11 +198,11 @@ export type AcceptedPlugin =
+     }
+   | Processor
+ 
+-export interface Parser<RootNode = Root | Document> {
++export interface Parser {
+   (
+     css: string | { toString(): string },
+     opts?: Pick<ProcessOptions, 'map' | 'from'>
+-  ): RootNode
++  ): Root
+ }
+ 
+ export interface Builder {
+@@ -369,7 +345,7 @@ export interface Postcss {
+   stringify: Stringifier
+ 
+   /**
+-   * Parses source css and returns a new `Root` or `Document` node,
++   * Parses source css and returns a new `Root` node,
+    * which contains the source CSS nodes.
+    *
+    * ```js
+@@ -379,7 +355,7 @@ export interface Postcss {
+    * root1.append(root2).toResult().css
+    * ```
+    */
+-  parse: Parser<Root>
++  parse: Parser
+ 
+   /**
+    * Rehydrate a JSON AST (from `Node#toJSON`) back into the AST classes.
+@@ -437,14 +413,6 @@ export interface Postcss {
+    */
+   root(defaults?: RootProps): Root
+ 
+-  /**
+-   * Creates a new `Document` node.
+-   *
+-   * @param defaults Properties for the new node.
+-   * @return New document node.
+-   */
+-  document(defaults?: DocumentProps): Document
+-
+   CssSyntaxError: typeof CssSyntaxError
+   Declaration: typeof Declaration
+   Container: typeof Container
+@@ -459,7 +427,7 @@ export interface Postcss {
+ }
+ 
+ export const stringify: Stringifier
+-export const parse: Parser<Root>
++export const parse: Parser
+ export const fromJSON: JSONHydrator
+ 
+ export const comment: Postcss['comment']
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.js
+index d3f640e..9f36dec 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.js
+@@ -7,7 +7,6 @@ let Container = require('./container')
+ let Processor = require('./processor')
+ let stringify = require('./stringify')
+ let fromJSON = require('./fromJSON')
+-let Document = require('./document')
+ let Warning = require('./warning')
+ let Comment = require('./comment')
+ let AtRule = require('./at-rule')
+@@ -19,25 +18,22 @@ let Rule = require('./rule')
+ let Root = require('./root')
+ let Node = require('./node')
+ 
+-function postcss(...plugins) {
++function postcss (...plugins) {
+   if (plugins.length === 1 && Array.isArray(plugins[0])) {
+     plugins = plugins[0]
+   }
+   return new Processor(plugins)
+ }
+ 
+-postcss.plugin = function plugin(name, initializer) {
+-  // eslint-disable-next-line no-console
++postcss.plugin = function plugin (name, initializer) {
+   if (console && console.warn) {
+-    // eslint-disable-next-line no-console
+     console.warn(
+       name +
+         ': postcss.plugin was deprecated. Migration guide:\n' +
+         'https://evilmartians.com/chronicles/postcss-8-plugin-migration'
+     )
+     if (process.env.LANG && process.env.LANG.startsWith('cn')) {
+-      /* c8 ignore next 7 */
+-      // eslint-disable-next-line no-console
++      // istanbul ignore next
+       console.warn(
+         name +
+           ': 里面 postcss.plugin 被弃用. 迁移指南:\n' +
+@@ -45,7 +41,7 @@ postcss.plugin = function plugin(name, initializer) {
+       )
+     }
+   }
+-  function creator(...args) {
++  function creator (...args) {
+     let transformer = initializer(...args)
+     transformer.postcssPlugin = name
+     transformer.postcssVersion = new Processor().version
+@@ -54,7 +50,7 @@ postcss.plugin = function plugin(name, initializer) {
+ 
+   let cache
+   Object.defineProperty(creator, 'postcss', {
+-    get() {
++    get () {
+       if (!cache) cache = creator()
+       return cache
+     }
+@@ -77,13 +73,10 @@ postcss.atRule = defaults => new AtRule(defaults)
+ postcss.decl = defaults => new Declaration(defaults)
+ postcss.rule = defaults => new Rule(defaults)
+ postcss.root = defaults => new Root(defaults)
+-postcss.document = defaults => new Document(defaults)
+ 
+ postcss.CssSyntaxError = CssSyntaxError
+ postcss.Declaration = Declaration
+ postcss.Container = Container
+-postcss.Processor = Processor
+-postcss.Document = Document
+ postcss.Comment = Comment
+ postcss.Warning = Warning
+ postcss.AtRule = AtRule
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.mjs b/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.mjs
+index 3507598..e6360c4 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.mjs
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/postcss.mjs
+@@ -8,7 +8,6 @@ export const plugin = postcss.plugin
+ export const parse = postcss.parse
+ export const list = postcss.list
+ 
+-export const document = postcss.document
+ export const comment = postcss.comment
+ export const atRule = postcss.atRule
+ export const rule = postcss.rule
+@@ -18,8 +17,6 @@ export const root = postcss.root
+ export const CssSyntaxError = postcss.CssSyntaxError
+ export const Declaration = postcss.Declaration
+ export const Container = postcss.Container
+-export const Processor = postcss.Processor
+-export const Document = postcss.Document
+ export const Comment = postcss.Comment
+ export const Warning = postcss.Warning
+ export const AtRule = postcss.AtRule
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.d.ts
+index 490d885..26c7b05 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.d.ts
+@@ -1,4 +1,4 @@
+-import { SourceMapConsumer } from 'source-map-js'
++import { SourceMapConsumer } from 'source-map'
+ 
+ import { ProcessOptions } from './postcss.js'
+ 
+@@ -50,7 +50,7 @@ export default class PreviousMap {
+    * @param css  Input CSS source.
+    * @param opts Process options.
+    */
+-  constructor(css: string, opts?: ProcessOptions)
++  constructor (css: string, opts?: ProcessOptions)
+ 
+   /**
+    * Create a instance of `SourceMapGenerator` class
+@@ -61,12 +61,12 @@ export default class PreviousMap {
+    *
+    * @return Object with source map information.
+    */
+-  consumer(): SourceMapConsumer
++  consumer (): SourceMapConsumer
+ 
+   /**
+    * Does source map contains `sourcesContent` with input source text.
+    *
+    * @return Is `sourcesContent` present.
+    */
+-  withContent(): boolean
++  withContent (): boolean
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.js
+index d13a93a..5f9265c 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/previous-map.js
+@@ -1,20 +1,20 @@
+ 'use strict'
+ 
+-let { SourceMapConsumer, SourceMapGenerator } = require('source-map-js')
+ let { existsSync, readFileSync } = require('fs')
+ let { dirname, join } = require('path')
++let mozilla = require('source-map')
+ 
+-function fromBase64(str) {
++function fromBase64 (str) {
+   if (Buffer) {
+     return Buffer.from(str, 'base64').toString()
+   } else {
+-    /* c8 ignore next 2 */
++    // istanbul ignore next
+     return window.atob(str)
+   }
+ }
+ 
+ class PreviousMap {
+-  constructor(css, opts) {
++  constructor (css, opts) {
+     if (opts.map === false) return
+     this.loadAnnotation(css)
+     this.inline = this.startWith(this.annotation, 'data:')
+@@ -28,44 +28,45 @@ class PreviousMap {
+     if (text) this.text = text
+   }
+ 
+-  consumer() {
++  consumer () {
+     if (!this.consumerCache) {
+-      this.consumerCache = new SourceMapConsumer(this.text)
++      this.consumerCache = new mozilla.SourceMapConsumer(this.text)
+     }
+     return this.consumerCache
+   }
+ 
+-  withContent() {
++  withContent () {
+     return !!(
+       this.consumer().sourcesContent &&
+       this.consumer().sourcesContent.length > 0
+     )
+   }
+ 
+-  startWith(string, start) {
++  startWith (string, start) {
+     if (!string) return false
+     return string.substr(0, start.length) === start
+   }
+ 
+-  getAnnotationURL(sourceMapString) {
+-    return sourceMapString.replace(/^\/\*\s*# sourceMappingURL=/, '').trim()
++  getAnnotationURL (sourceMapString) {
++    return sourceMapString
++      .match(/\/\*\s*# sourceMappingURL=(.*)\s*\*\//)[1]
++      .trim()
+   }
+ 
+-  loadAnnotation(css) {
+-    let comments = css.match(/\/\*\s*# sourceMappingURL=/gm)
+-    if (!comments) return
++  loadAnnotation (css) {
++    let annotations = css.match(/\/\*\s*# sourceMappingURL=.*\s*\*\//gm)
+ 
+-    // sourceMappingURLs from comments, strings, etc.
+-    let start = css.lastIndexOf(comments.pop())
+-    let end = css.indexOf('*/', start)
+-
+-    if (start > -1 && end > -1) {
+-      // Locate the last sourceMappingURL to avoid pickin
+-      this.annotation = this.getAnnotationURL(css.substring(start, end))
++    if (annotations && annotations.length > 0) {
++      // Locate the last sourceMappingURL to avoid picking up
++      // sourceMappingURLs from comments, strings, etc.
++      let lastAnnotation = annotations[annotations.length - 1]
++      if (lastAnnotation) {
++        this.annotation = this.getAnnotationURL(lastAnnotation)
++      }
+     }
+   }
+ 
+-  decodeInline(text) {
++  decodeInline (text) {
+     let baseCharsetUri = /^data:application\/json;charset=utf-?8;base64,/
+     let baseUri = /^data:application\/json;base64,/
+     let charsetUri = /^data:application\/json;charset=utf-?8,/
+@@ -83,7 +84,7 @@ class PreviousMap {
+     throw new Error('Unsupported source map encoding ' + encoding)
+   }
+ 
+-  loadFile(path) {
++  loadFile (path) {
+     this.root = dirname(path)
+     if (existsSync(path)) {
+       this.mapFile = path
+@@ -91,7 +92,7 @@ class PreviousMap {
+     }
+   }
+ 
+-  loadMap(file, prev) {
++  loadMap (file, prev) {
+     if (prev === false) return false
+ 
+     if (prev) {
+@@ -108,9 +109,9 @@ class PreviousMap {
+           }
+           return map
+         }
+-      } else if (prev instanceof SourceMapConsumer) {
+-        return SourceMapGenerator.fromSourceMap(prev).toString()
+-      } else if (prev instanceof SourceMapGenerator) {
++      } else if (prev instanceof mozilla.SourceMapConsumer) {
++        return mozilla.SourceMapGenerator.fromSourceMap(prev).toString()
++      } else if (prev instanceof mozilla.SourceMapGenerator) {
+         return prev.toString()
+       } else if (this.isMap(prev)) {
+         return JSON.stringify(prev)
+@@ -128,7 +129,7 @@ class PreviousMap {
+     }
+   }
+ 
+-  isMap(map) {
++  isMap (map) {
+     if (typeof map !== 'object') return false
+     return (
+       typeof map.mappings === 'string' ||
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.d.ts
+index e1affa4..84c45d1 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.d.ts
+@@ -8,14 +8,13 @@ import {
+ import LazyResult from './lazy-result.js'
+ import Result from './result.js'
+ import Root from './root.js'
+-import NoWorkResult from './no-work-result.js'
+ 
+ /**
+  * Contains plugins to process CSS. Create one `Processor` instance,
+  * initialize its plugins, and then use that instance on numerous CSS files.
+  *
+  * ```js
+- * const processor = postcss([autoprefixer, postcssNested])
++ * const processor = postcss([autoprefixer, precss])
+  * processor.process(css1).then(result => console.log(result.css))
+  * processor.process(css2).then(result => console.log(result.css))
+  * ```
+@@ -36,7 +35,7 @@ export default class Processor {
+    * Plugins added to this processor.
+    *
+    * ```js
+-   * const processor = postcss([autoprefixer, postcssNested])
++   * const processor = postcss([autoprefixer, precss])
+    * processor.plugins.length //=> 2
+    * ```
+    */
+@@ -45,7 +44,7 @@ export default class Processor {
+   /**
+    * @param plugins PostCSS plugins
+    */
+-  constructor(plugins?: AcceptedPlugin[])
++  constructor (plugins?: AcceptedPlugin[])
+ 
+   /**
+    * Adds a plugin to be used as a CSS processor.
+@@ -68,13 +67,13 @@ export default class Processor {
+    * ```js
+    * const processor = postcss()
+    *   .use(autoprefixer)
+-   *   .use(postcssNested)
++   *   .use(precss)
+    * ```
+    *
+    * @param plugin PostCSS plugin or `Processor` with plugins.
+    * @return {Processes} Current processor to make methods chain.
+    */
+-  use(plugin: AcceptedPlugin): this
++  use (plugin: AcceptedPlugin): this
+ 
+   /**
+    * Parses source CSS and returns a `LazyResult` Promise proxy.
+@@ -95,8 +94,8 @@ export default class Processor {
+    * @param opts Options.
+    * @return Promise proxy.
+    */
+-  process(
++  process (
+     css: string | { toString(): string } | Result | LazyResult | Root,
+     options?: ProcessOptions
+-  ): LazyResult | NoWorkResult
++  ): LazyResult
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.js
+index 8eb91b0..8819906 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/processor.js
+@@ -1,35 +1,39 @@
+ 'use strict'
+ 
+-let NoWorkResult = require('./no-work-result')
+ let LazyResult = require('./lazy-result')
+-let Document = require('./document')
+ let Root = require('./root')
+ 
+ class Processor {
+-  constructor(plugins = []) {
+-    this.version = '8.4.4'
++  constructor (plugins = []) {
++    this.version = '8.2.6'
+     this.plugins = this.normalize(plugins)
+   }
+ 
+-  use(plugin) {
++  use (plugin) {
+     this.plugins = this.plugins.concat(this.normalize([plugin]))
+     return this
+   }
+ 
+-  process(css, opts = {}) {
++  process (css, opts = {}) {
+     if (
+       this.plugins.length === 0 &&
+-      typeof opts.parser === 'undefined' &&
+-      typeof opts.stringifier === 'undefined' &&
+-      typeof opts.syntax === 'undefined'
++      opts.parser === opts.stringifier &&
++      !opts.hideNothingWarning
+     ) {
+-      return new NoWorkResult(this, css, opts)
+-    } else {
+-      return new LazyResult(this, css, opts)
++      if (process.env.NODE_ENV !== 'production') {
++        if (typeof console !== 'undefined' && console.warn) {
++          console.warn(
++            'You did not set any plugins, parser, or stringifier. ' +
++              'Right now, PostCSS does nothing. Pick plugins for your case ' +
++              'on https://www.postcss.parts/ and use them in postcss.config.js.'
++          )
++        }
++      }
+     }
++    return new LazyResult(this, css, opts)
+   }
+ 
+-  normalize(plugins) {
++  normalize (plugins) {
+     let normalized = []
+     for (let i of plugins) {
+       if (i.postcss === true) {
+@@ -64,4 +68,3 @@ module.exports = Processor
+ Processor.default = Processor
+ 
+ Root.registerProcessor(Processor)
+-Document.registerProcessor(Processor)
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.d.ts
+index 8a582b6..be4b6c8 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.d.ts
+@@ -4,7 +4,6 @@ import {
+   SourceMap,
+   TransformCallback,
+   Root,
+-  Document,
+   Node,
+   Warning,
+   WarningOptions
+@@ -95,7 +94,7 @@ export default class Result {
+    * root.toResult().root === root
+    * ```
+    */
+-  root: Root | Document
++  root: Root
+ 
+   /**
+    * Options from the `Processor#process` or `Root#toResult` call
+@@ -142,7 +141,7 @@ export default class Result {
+    * @param root      Root node after all transformations.
+    * @param opts      Options from the `Processor#process` or `Root#toResult`.
+    */
+-  constructor(processor: Processor, root: Root | Document, opts: ResultOptions)
++  constructor (processor: Processor, root: Root, opts: ResultOptions)
+ 
+   /**
+    * An alias for the `Result#css` property.
+@@ -152,7 +151,7 @@ export default class Result {
+    * result.css === result.content
+    * ```
+    */
+-  get content(): string
++  get content (): string
+ 
+   /**
+    * Returns for `Result#css` content.
+@@ -163,7 +162,7 @@ export default class Result {
+    *
+    * @return String representing of `Result#root`.
+    */
+-  toString(): string
++  toString (): string
+ 
+   /**
+    * Creates an instance of `Warning` and adds it to `Result#messages`.
+@@ -178,7 +177,7 @@ export default class Result {
+    * @param opts Warning options.
+    * @return Created warning.
+    */
+-  warn(message: string, options?: WarningOptions): Warning
++  warn (message: string, options?: WarningOptions): Warning
+ 
+   /**
+    * Returns warnings from plugins. Filters `Warning` instances
+@@ -192,5 +191,5 @@ export default class Result {
+    *
+    * @return Warnings from plugins.
+    */
+-  warnings(): Warning[]
++  warnings (): Warning[]
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.js
+index a39751d..208ddf6 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/result.js
+@@ -3,7 +3,7 @@
+ let Warning = require('./warning')
+ 
+ class Result {
+-  constructor(processor, root, opts) {
++  constructor (processor, root, opts) {
+     this.processor = processor
+     this.messages = []
+     this.root = root
+@@ -12,11 +12,11 @@ class Result {
+     this.map = undefined
+   }
+ 
+-  toString() {
++  toString () {
+     return this.css
+   }
+ 
+-  warn(text, opts = {}) {
++  warn (text, opts = {}) {
+     if (!opts.plugin) {
+       if (this.lastPlugin && this.lastPlugin.postcssPlugin) {
+         opts.plugin = this.lastPlugin.postcssPlugin
+@@ -29,11 +29,11 @@ class Result {
+     return warning
+   }
+ 
+-  warnings() {
++  warnings () {
+     return this.messages.filter(i => i.type === 'warning')
+   }
+ 
+-  get content() {
++  get content () {
+     return this.css
+   }
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.d.ts
+index 251b92b..af086cd 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.d.ts
+@@ -1,30 +1,13 @@
+ import Container, { ContainerProps } from './container.js'
+-import Document from './document.js'
+ import { ProcessOptions } from './postcss.js'
+ import Result from './result.js'
+ 
+-interface RootRaws extends Record<string, any> {
++interface RootRaws {
+   /**
+    * The space symbols after the last child to the end of file.
+    */
+   after?: string
+ 
+-  /**
+-   * Non-CSS code before `Root`, when `Root` is inside `Document`.
+-   *
+-   * **Experimental:** some aspects of this node could change within minor
+-   * or patch version releases.
+-   */
+-  codeBefore?: string
+-
+-  /**
+-   * Non-CSS code after `Root`, when `Root` is inside `Document`.
+-   *
+-   * **Experimental:** some aspects of this node could change within minor
+-   * or patch version releases.
+-   */
+-  codeAfter?: string
+-
+   /**
+    * Is the last child has an (optional) semicolon.
+    */
+@@ -32,10 +15,6 @@ interface RootRaws extends Record<string, any> {
+ }
+ 
+ export interface RootProps extends ContainerProps {
+-  /**
+-   * Information used to generate byte-to-byte equal node string
+-   * as it was in the origin input.
+-   * */
+   raws?: RootRaws
+ }
+ 
+@@ -50,9 +29,11 @@ export interface RootProps extends ContainerProps {
+  */
+ export default class Root extends Container {
+   type: 'root'
+-  parent: Document | undefined
++  parent: undefined
+   raws: RootRaws
+ 
++  constructor (defaults?: RootProps)
++
+   /**
+    * Returns a `Result` instance representing the root’s CSS.
+    *
+@@ -66,8 +47,5 @@ export default class Root extends Container {
+    * @param opts Options.
+    * @return Result with current root’s CSS.
+    */
+-  toResult(options?: ProcessOptions): Result
+-
+-  constructor(defaults?: RootProps)
+-  assign(overrides: object | RootProps): this
++  toResult (options?: ProcessOptions): Result
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.js
+index 18e4cea..97fb278 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/root.js
+@@ -5,13 +5,13 @@ let Container = require('./container')
+ let LazyResult, Processor
+ 
+ class Root extends Container {
+-  constructor(defaults) {
++  constructor (defaults) {
+     super(defaults)
+     this.type = 'root'
+     if (!this.nodes) this.nodes = []
+   }
+ 
+-  removeChild(child, ignore) {
++  removeChild (child, ignore) {
+     let index = this.index(child)
+ 
+     if (!ignore && index === 0 && this.nodes.length > 1) {
+@@ -21,7 +21,7 @@ class Root extends Container {
+     return super.removeChild(child)
+   }
+ 
+-  normalize(child, sample, type) {
++  normalize (child, sample, type) {
+     let nodes = super.normalize(child)
+ 
+     if (sample) {
+@@ -41,7 +41,7 @@ class Root extends Container {
+     return nodes
+   }
+ 
+-  toResult(opts = {}) {
++  toResult (opts = {}) {
+     let lazy = new LazyResult(new Processor(), this, opts)
+     return lazy.stringify()
+   }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.d.ts
+index 75ddf31..54708e8 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.d.ts
+@@ -37,11 +37,8 @@ interface RuleRaws {
+ }
+ 
+ export interface RuleProps extends ContainerProps {
+-  /** Selector or selectors of the rule. */
+   selector?: string
+-  /** Selectors of the rule represented as an array of strings. */
+   selectors?: string[]
+-  /** Information used to generate byte-to-byte equal node string as it was in the origin input. */
+   raws?: RuleRaws
+ }
+ 
+@@ -65,7 +62,6 @@ export interface RuleProps extends ContainerProps {
+  */
+ export default class Rule extends Container {
+   type: 'rule'
+-  parent: Container | undefined
+   raws: RuleRaws
+ 
+   /**
+@@ -96,9 +92,8 @@ export default class Rule extends Container {
+    */
+   selectors: string[]
+ 
+-  constructor(defaults?: RuleProps)
+-  assign(overrides: object | RuleProps): this
+-  clone(overrides?: Partial<RuleProps>): this
+-  cloneBefore(overrides?: Partial<RuleProps>): this
+-  cloneAfter(overrides?: Partial<RuleProps>): this
++  constructor (defaults?: RuleProps)
++  clone (overrides?: Partial<RuleProps>): this
++  cloneBefore (overrides?: Partial<RuleProps>): this
++  cloneAfter (overrides?: Partial<RuleProps>): this
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.js
+index a93ab25..fe0c606 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/rule.js
+@@ -4,17 +4,17 @@ let Container = require('./container')
+ let list = require('./list')
+ 
+ class Rule extends Container {
+-  constructor(defaults) {
++  constructor (defaults) {
+     super(defaults)
+     this.type = 'rule'
+     if (!this.nodes) this.nodes = []
+   }
+ 
+-  get selectors() {
++  get selectors () {
+     return list.comma(this.selector)
+   }
+ 
+-  set selectors(values) {
++  set selectors (values) {
+     let match = this.selector ? this.selector.match(/,\s*/) : null
+     let sep = match ? match[0] : ',' + this.raw('between', 'beforeOpen')
+     this.selector = values.join(sep)
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringifier.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringifier.d.ts
+deleted file mode 100644
+index 23289df..0000000
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringifier.d.ts
++++ /dev/null
+@@ -1,37 +0,0 @@
+-import {
+-  Document,
+-  Root,
+-  Comment,
+-  Declaration,
+-  Builder,
+-  AnyNode,
+-  Rule,
+-  AtRule,
+-  Container
+-} from './postcss.js'
+-
+-export default class Stringifier {
+-  builder: Builder
+-  constructor(builder: Builder)
+-  stringify(node: AnyNode, semicolon?: boolean): void
+-  document(node: Document): void
+-  root(node: Root): void
+-  comment(node: Comment): void
+-  decl(node: Declaration, semicolon?: boolean): void
+-  rule(node: Rule): void
+-  atrule(node: AtRule, semicolon?: boolean): void
+-  body(node: Container): void
+-  block(node: AnyNode, start: string): void
+-  raw(node: AnyNode, own: string | null, detect?: string): string
+-  rawSemicolon(root: Root): boolean | undefined
+-  rawEmptyBody(root: Root): string | undefined
+-  rawIndent(root: Root): string | undefined
+-  rawBeforeComment(root: Root, node: Comment): string | undefined
+-  rawBeforeDecl(root: Root, node: Declaration): string | undefined
+-  rawBeforeRule(root: Root): string | undefined
+-  rawBeforeClose(root: Root): string | undefined
+-  rawBeforeOpen(root: Root): string | undefined
+-  rawColon(root: Root): string | undefined
+-  beforeAfter(node: AnyNode, detect: 'before' | 'after'): string
+-  rawValue(node: AnyNode, prop: string): string
+-}
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringifier.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringifier.js
+index 4065c47..0dc6a97 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringifier.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringifier.js
+@@ -15,17 +15,17 @@ const DEFAULT_RAW = {
+   semicolon: false
+ }
+ 
+-function capitalize(str) {
++function capitalize (str) {
+   return str[0].toUpperCase() + str.slice(1)
+ }
+ 
+ class Stringifier {
+-  constructor(builder) {
++  constructor (builder) {
+     this.builder = builder
+   }
+ 
+-  stringify(node, semicolon) {
+-    /* c8 ignore start */
++  stringify (node, semicolon) {
++    /* istanbul ignore if */
+     if (!this[node.type]) {
+       throw new Error(
+         'Unknown AST node type ' +
+@@ -34,26 +34,21 @@ class Stringifier {
+           'Maybe you need to change PostCSS stringifier.'
+       )
+     }
+-    /* c8 ignore stop */
+     this[node.type](node, semicolon)
+   }
+ 
+-  document(node) {
+-    this.body(node)
+-  }
+-
+-  root(node) {
++  root (node) {
+     this.body(node)
+     if (node.raws.after) this.builder(node.raws.after)
+   }
+ 
+-  comment(node) {
++  comment (node) {
+     let left = this.raw(node, 'left', 'commentLeft')
+     let right = this.raw(node, 'right', 'commentRight')
+     this.builder('/*' + left + node.text + right + '*/', node)
+   }
+ 
+-  decl(node, semicolon) {
++  decl (node, semicolon) {
+     let between = this.raw(node, 'between', 'colon')
+     let string = node.prop + between + this.rawValue(node, 'value')
+ 
+@@ -65,14 +60,14 @@ class Stringifier {
+     this.builder(string, node)
+   }
+ 
+-  rule(node) {
++  rule (node) {
+     this.block(node, this.rawValue(node, 'selector'))
+     if (node.raws.ownSemicolon) {
+       this.builder(node.raws.ownSemicolon, node, 'end')
+     }
+   }
+ 
+-  atrule(node, semicolon) {
++  atrule (node, semicolon) {
+     let name = '@' + node.name
+     let params = node.params ? this.rawValue(node, 'params') : ''
+ 
+@@ -90,7 +85,7 @@ class Stringifier {
+     }
+   }
+ 
+-  body(node) {
++  body (node) {
+     let last = node.nodes.length - 1
+     while (last > 0) {
+       if (node.nodes[last].type !== 'comment') break
+@@ -106,7 +101,7 @@ class Stringifier {
+     }
+   }
+ 
+-  block(node, start) {
++  block (node, start) {
+     let between = this.raw(node, 'between', 'beforeOpen')
+     this.builder(start + between + '{', node, 'start')
+ 
+@@ -122,7 +117,7 @@ class Stringifier {
+     this.builder('}', node, 'end')
+   }
+ 
+-  raw(node, own, detect) {
++  raw (node, own, detect) {
+     let value
+     if (!detect) detect = own
+ 
+@@ -134,16 +129,11 @@ class Stringifier {
+ 
+     let parent = node.parent
+ 
++    // Hack for first rule in CSS
+     if (detect === 'before') {
+-      // Hack for first rule in CSS
+       if (!parent || (parent.type === 'root' && parent.first === node)) {
+         return ''
+       }
+-
+-      // `root` nodes in `document` should use only their own raws
+-      if (parent && parent.type === 'document') {
+-        return ''
+-      }
+     }
+ 
+     // Floating child without parent
+@@ -176,7 +166,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawSemicolon(root) {
++  rawSemicolon (root) {
+     let value
+     root.walk(i => {
+       if (i.nodes && i.nodes.length && i.last.type === 'decl') {
+@@ -187,7 +177,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawEmptyBody(root) {
++  rawEmptyBody (root) {
+     let value
+     root.walk(i => {
+       if (i.nodes && i.nodes.length === 0) {
+@@ -198,7 +188,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawIndent(root) {
++  rawIndent (root) {
+     if (root.raws.indent) return root.raws.indent
+     let value
+     root.walk(i => {
+@@ -215,7 +205,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawBeforeComment(root, node) {
++  rawBeforeComment (root, node) {
+     let value
+     root.walkComments(i => {
+       if (typeof i.raws.before !== 'undefined') {
+@@ -234,7 +224,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawBeforeDecl(root, node) {
++  rawBeforeDecl (root, node) {
+     let value
+     root.walkDecls(i => {
+       if (typeof i.raws.before !== 'undefined') {
+@@ -253,7 +243,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawBeforeRule(root) {
++  rawBeforeRule (root) {
+     let value
+     root.walk(i => {
+       if (i.nodes && (i.parent !== root || root.first !== i)) {
+@@ -270,7 +260,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawBeforeClose(root) {
++  rawBeforeClose (root) {
+     let value
+     root.walk(i => {
+       if (i.nodes && i.nodes.length > 0) {
+@@ -287,7 +277,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawBeforeOpen(root) {
++  rawBeforeOpen (root) {
+     let value
+     root.walk(i => {
+       if (i.type !== 'decl') {
+@@ -298,7 +288,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawColon(root) {
++  rawColon (root) {
+     let value
+     root.walkDecls(i => {
+       if (typeof i.raws.between !== 'undefined') {
+@@ -309,7 +299,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  beforeAfter(node, detect) {
++  beforeAfter (node, detect) {
+     let value
+     if (node.type === 'decl') {
+       value = this.raw(node, null, 'beforeDecl')
+@@ -338,7 +328,7 @@ class Stringifier {
+     return value
+   }
+ 
+-  rawValue(node, prop) {
++  rawValue (node, prop) {
+     let value = node[prop]
+     let raw = node.raws[prop]
+     if (raw && raw.value === value) {
+@@ -350,4 +340,3 @@ class Stringifier {
+ }
+ 
+ module.exports = Stringifier
+-Stringifier.default = Stringifier
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringify.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringify.js
+index 77bd017..c39a9fa 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringify.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/stringify.js
+@@ -2,7 +2,7 @@
+ 
+ let Stringifier = require('./stringifier')
+ 
+-function stringify(node, builder) {
++function stringify (node, builder) {
+   let str = new Stringifier(builder)
+   str.stringify(node)
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/symbols.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/symbols.js
+index a142c26..4a6f1c3 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/symbols.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/symbols.js
+@@ -1,5 +1,3 @@
+ 'use strict'
+ 
+ module.exports.isClean = Symbol('isClean')
+-
+-module.exports.my = Symbol('my')
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/terminal-highlight.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/terminal-highlight.js
+index 1f9f19e..5eb681c 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/terminal-highlight.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/terminal-highlight.js
+@@ -1,34 +1,34 @@
+ 'use strict'
+ 
+-let pico = require('picocolors')
++let { cyan, gray, green, yellow, magenta } = require('colorette')
+ 
+ let tokenizer = require('./tokenize')
+ 
+ let Input
+ 
+-function registerInput(dependant) {
++function registerInput (dependant) {
+   Input = dependant
+ }
+ 
+ const HIGHLIGHT_THEME = {
+-  'brackets': pico.cyan,
+-  'at-word': pico.cyan,
+-  'comment': pico.gray,
+-  'string': pico.green,
+-  'class': pico.yellow,
+-  'hash': pico.magenta,
+-  'call': pico.cyan,
+-  '(': pico.cyan,
+-  ')': pico.cyan,
+-  '{': pico.yellow,
+-  '}': pico.yellow,
+-  '[': pico.yellow,
+-  ']': pico.yellow,
+-  ':': pico.yellow,
+-  ';': pico.yellow
++  'brackets': cyan,
++  'at-word': cyan,
++  'comment': gray,
++  'string': green,
++  'class': yellow,
++  'hash': magenta,
++  'call': cyan,
++  '(': cyan,
++  ')': cyan,
++  '{': yellow,
++  '}': yellow,
++  '[': yellow,
++  ']': yellow,
++  ':': yellow,
++  ';': yellow
+ }
+ 
+-function getTokenType([type, value], processor) {
++function getTokenType ([type, value], processor) {
+   if (type === 'word') {
+     if (value[0] === '.') {
+       return 'class'
+@@ -47,7 +47,7 @@ function getTokenType([type, value], processor) {
+   return type
+ }
+ 
+-function terminalHighlight(css) {
++function terminalHighlight (css) {
+   let processor = tokenizer(new Input(css), { ignoreErrors: true })
+   let result = ''
+   while (!processor.endOfFile()) {
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/tokenize.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/tokenize.js
+index 8dac706..350c4e5 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/tokenize.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/tokenize.js
+@@ -25,7 +25,7 @@ const RE_WORD_END = /[\t\n\f\r !"#'():;@[\\\]{}]|\/(?=\*)/g
+ const RE_BAD_BRACKET = /.[\n"'(/\\]/
+ const RE_HEX_ESCAPE = /[\da-f]/i
+ 
+-module.exports = function tokenizer(input, options = {}) {
++module.exports = function tokenizer (input, options = {}) {
+   let css = input.css.valueOf()
+   let ignore = options.ignoreErrors
+ 
+@@ -37,19 +37,19 @@ module.exports = function tokenizer(input, options = {}) {
+   let buffer = []
+   let returned = []
+ 
+-  function position() {
++  function position () {
+     return pos
+   }
+ 
+-  function unclosed(what) {
++  function unclosed (what) {
+     throw input.error('Unclosed ' + what, pos)
+   }
+ 
+-  function endOfFile() {
++  function endOfFile () {
+     return returned.length === 0 && pos >= length
+   }
+ 
+-  function nextToken(opts) {
++  function nextToken (opts) {
+     if (returned.length) return returned.pop()
+     if (pos >= length) return
+ 
+@@ -253,7 +253,7 @@ module.exports = function tokenizer(input, options = {}) {
+     return currentToken
+   }
+ 
+-  function back(token) {
++  function back (token) {
+     returned.push(token)
+   }
+ 
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/warn-once.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/warn-once.js
+index 316e1cf..516c554 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/warn-once.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/warn-once.js
+@@ -1,9 +1,8 @@
+-/* eslint-disable no-console */
+ 'use strict'
+ 
+ let printed = {}
+ 
+-module.exports = function warnOnce(message) {
++module.exports = function warnOnce (message) {
+   if (printed[message]) return
+   printed[message] = true
+ 
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.d.ts b/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.d.ts
+index 838bef1..d254d4b 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.d.ts
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.d.ts
+@@ -1,4 +1,3 @@
+-import { RangePosition } from './css-syntax-error.js'
+ import Node from './node.js'
+ 
+ export interface WarningOptions {
+@@ -13,25 +12,10 @@ export interface WarningOptions {
+   word?: string
+ 
+   /**
+-   * Start index, inclusive, in CSS node string that caused the warning.
++   * Index in CSS node string that caused the warning.
+    */
+   index?: number
+ 
+-  /**
+-   * End index, exclusive, in CSS node string that caused the warning.
+-   */
+-  endIndex?: number
+-
+-  /**
+-   * Start position, inclusive, in CSS node string that caused the warning.
+-   */
+-  start?: RangePosition
+-
+-  /**
+-   * End position, exclusive, in CSS node string that caused the warning.
+-   */
+-  end?: RangePosition
+-
+   /**
+    * Name of the plugin that created this warning. `Result#warn` fills
+    * this property automatically.
+@@ -84,7 +68,7 @@ export default class Warning {
+   node: Node
+ 
+   /**
+-   * Line for inclusive start position in the input file with this warning’s source.
++   * Line in the input file with this warning’s source.
+    *
+    * ```js
+    * warning.line //=> 5
+@@ -93,7 +77,7 @@ export default class Warning {
+   line: number
+ 
+   /**
+-   * Column for inclusive start position in the input file with this warning’s source.
++   * Column in the input file with this warning’s source.
+    *
+    * ```js
+    * warning.column //=> 6
+@@ -101,29 +85,11 @@ export default class Warning {
+    */
+   column: number
+ 
+-  /**
+-   * Line for exclusive end position in the input file with this warning’s source.
+-   *
+-   * ```js
+-   * warning.endLine //=> 6
+-   * ```
+-   */
+-  endLine?: number
+-
+-  /**
+-   * Column for exclusive end position in the input file with this warning’s source.
+-   *
+-   * ```js
+-   * warning.endColumn //=> 4
+-   * ```
+-   */
+-  endColumn?: number
+-
+   /**
+    * @param text Warning message.
+    * @param opts Warning options.
+    */
+-  constructor(text: string, opts?: WarningOptions)
++  constructor (text: string, opts?: WarningOptions)
+ 
+   /**
+    * Returns a warning position and message.
+@@ -134,5 +100,5 @@ export default class Warning {
+    *
+    * @return Warning position and message.
+    */
+-  toString(): string
++  toString (): string
+ }
+diff --git a/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.js b/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.js
+index 65aa525..d40f533 100644
+--- a/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.js
++++ b/node_modules/postcss-safe-parser/node_modules/postcss/lib/warning.js
+@@ -1,22 +1,20 @@
+ 'use strict'
+ 
+ class Warning {
+-  constructor(text, opts = {}) {
++  constructor (text, opts = {}) {
+     this.type = 'warning'
+     this.text = text
+ 
+     if (opts.node && opts.node.source) {
+-      let range = opts.node.rangeBy(opts)
+-      this.line = range.start.line
+-      this.column = range.start.column
+-      this.endLine = range.end.line
+-      this.endColumn = range.end.column
++      let pos = opts.node.positionBy(opts)
++      this.line = pos.line
++      this.column = pos.column
+     }
+ 
+     for (let opt in opts) this[opt] = opts[opt]
+   }
+ 
+-  toString() {
++  toString () {
+     if (this.node) {
+       return this.node.error(this.text, {
+         plugin: this.plugin,
